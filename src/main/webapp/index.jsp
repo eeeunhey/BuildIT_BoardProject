@@ -13,7 +13,9 @@
 		<jsp:include page="/include/topMenu.jsp" />
 	</header>
 	<section>
-		section부분
+
+
+
 	</section>
 	<footer>
 		<%@ include file="/include/footer.jsp" %>

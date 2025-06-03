@@ -15,7 +15,7 @@ public class HandlerMapping {
 		mappings = new HashMap<String, Controller>();
 		Properties prop = new Properties();
 		try(
-			FileInputStream in = new FileInputStream("C:\\Users\\User\\eclipse-workspace\\Board-WEB\\bean.properties");
+			FileInputStream in = new FileInputStream("C:\\Users\\dmsgp\\git\\JS_BoardProject\\bean.properties");
 		) {
 			prop.load(in);
 			

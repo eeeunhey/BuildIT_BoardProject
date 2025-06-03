@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
 table, th, td {
-	border: 2px solid #D4E0EE;
 	border-collapse: collapse;
-	color: #555;
+	color: rgb(255, 255, 255);
 }
 
 th, td {
@@ -22,4 +21,44 @@ td a:hover {
 table th {
 	background-color: #E6EDF5;
 	color: #4F76A3;
+}
+
+/* 검색창 섹션 전체 */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  gap: 10px;
+}
+
+/* 검색 입력창 */
+.search-form input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.search-form input[type="text"]:focus {
+  border-color: #888;
+  outline: none;
+}
+
+/* 검색 버튼 */
+.search-form button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: #333;
 }
