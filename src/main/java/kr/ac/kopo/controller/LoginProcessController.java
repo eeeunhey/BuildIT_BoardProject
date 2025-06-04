@@ -1,0 +1,46 @@
+package kr.ac.kopo.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import kr.ac.kopo.framework.Controller;
+import kr.ac.kopo.member.service.MemberService;
+import kr.ac.kopo.member.vo.MemberVO;
+
+public class LoginProcessController implements Controller {
+	
+	private MemberService memberService;
+	
+	public LoginProcessController() {
+		memberService = new MemberService();
+	}
+
+
+	@Override
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        // 파라미터 추출(id, password)
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+
+        System.out.println("id : " + id + ", password : " + password);
+
+        // DB(t_member)에서 로그인여부 판단
+        MemberVO member = new MemberVO(id, password);
+		MemberVO userVO = memberService.login(member);
+		
+		// 판단여부에 따른 결과 응답(response)
+		String url = "";
+		if(userVO == null) {
+			// 로그인 실패
+			url = "redirect:/login.do";
+		} else {
+			// 로그인 성공
+			url = "redirect:/";
+			// 세션등록
+			HttpSession session = request.getSession();
+			session.setAttribute("userVO", userVO);
+		}
+		
+		return url;    }
+}

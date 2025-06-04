@@ -23,7 +23,8 @@
 		<td align="center" style="padding-right: 10px;"><span
 			style="float: right;">GUEST님 환영합니다</span> | <a
 			href="/Board-WEB/board/list.do">게시판</a> | <a
-			href="/Board-WEB/board/signIn.do">회원가입</a> | <a href="#">로그인</a> | <a
+			href="/Board-WEB/board/signIn.do">회원가입</a> | 
+			<a href="/Board-WEB/login.do">로그인</a> | <a
 			href="#">마이페이지</a> | <a href="#">로그아웃</a></td>
 	</tr>
 </table>

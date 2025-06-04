@@ -15,7 +15,7 @@ public class HandlerMapping {
 		mappings = new HashMap<String, Controller>();
 		Properties prop = new Properties();
 		try(
-			FileInputStream in = new FileInputStream("C:\\Users\\dmsgp\\git\\JS_BoardProject\\bean.properties");
+			FileInputStream in = new FileInputStream("D:\\JS_BoardProject\\bean.properties");
 		) {
 			prop.load(in);
 			
@@ -23,7 +23,7 @@ public class HandlerMapping {
 			for(Object key : keys) {
 //				System.out.println(key);
 				String className = prop.getProperty(key.toString());
-//				System.out.println(className);
+				System.out.println(className);
 				
 				Class<?> clz = Class.forName(className);
 				Constructor<?> constructor = clz.getConstructor();
