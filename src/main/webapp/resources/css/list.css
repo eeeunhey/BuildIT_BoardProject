@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.job-conditions {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.condition-box {
+  flex: 1;
+}
+
+.condition-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.condition-box th {
+  text-align: left;
+  color: #666;
+  width: 100px;
+  padding: 10px 5px;
+  vertical-align: top;
+}
+
+.condition-box td {
+  padding: 10px 5px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.highlight {
+  background: #e5f2fb;
+  color: #1379c6;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  margin-right: 6px;
+}

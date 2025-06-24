@@ -1,64 +1,128 @@
-@charset "UTF-8";
-
-table, th, td {
-	border-collapse: collapse;
-	color: rgb(255, 255, 255);
+/* 테이블 전체 구조를 좌우 분할처럼 보이게 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px; /* 행 사이 간격 */
 }
 
-th, td {
-	padding: 5px;
-}
-
-td a:link, td a:visited {
-	color: #718ABE;
-	text-decoration: none;
-}
-
-td a:hover {
-	text-decoration: underline;
-}
-
+/* 테이블 헤더 */
 table th {
-	background-color: #E6EDF5;
-	color: #4F76A3;
-}
-
-/* 검색창 섹션 전체 */
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  gap: 10px;
-}
-
-/* 검색 입력창 */
-.search-form input[type="text"] {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
   padding: 10px;
-  width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+}
+
+/* 테이블 각 행 카드 느낌 */
+table tr {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* 셀 안 여백 */
+table td {
+  padding: 12px;
+  vertical-align: middle;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 기업명: 작은 회색 글씨 */
+td.company {
+  color: #888;
+  font-size: 13px;
+}
+
+/* 공고 제목: 굵고 진하게 */
+td.title a {
   font-size: 16px;
-  transition: border-color 0.3s ease;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
 }
 
-.search-form input[type="text"]:focus {
-  border-color: #888;
-  outline: none;
+/* 급여 라벨(시급/월급) */
+td.salary-label {
+  color: #a94442;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-/* 검색 버튼 */
-.search-form button {
-  padding: 10px 20px;
-  background-color: #555;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+/* 급여 숫자 강조 */
+td.salary-amount {
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  color: #333;
 }
 
-.search-form button:hover {
-  background-color: #333;
+/* 등록일 */
+td.date {
+  font-size: 13px;
+  color: #777;
+}
+/* 테이블 전체 구조를 좌우 분할처럼 보이게 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px; /* 행 사이 간격 */
+}
+
+/* 테이블 헤더 */
+table th {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* 테이블 각 행 카드 느낌 */
+table tr {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* 셀 안 여백 */
+table td {
+  padding: 12px;
+  vertical-align: middle;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 기업명: 작은 회색 글씨 */
+td.company {
+  color: #888;
+  font-size: 13px;
+}
+
+/* 공고 제목: 굵고 진하게 */
+td.title a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
+}
+
+/* 급여 라벨(시급/월급) */
+td.salary-label {
+  color: #a94442;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 급여 숫자 강조 */
+td.salary-amount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 등록일 */
+td.date {
+  font-size: 13px;
+  color: #777;
 }

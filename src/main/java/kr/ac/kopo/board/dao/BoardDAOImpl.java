@@ -27,6 +27,8 @@ public class BoardDAOImpl implements BoardDAO {
 	    sql.append(" ORDER BY post_id DESC");
 
 	    try (
+	    		
+	    		
 	        Connection conn = new ConnectionFactory().getConnection();
 	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 	    ) {
@@ -61,39 +63,45 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardVO selectBoardByNo(int boardNo) {
+	public BoardVO selectBoardByNo(int postId) {
+	    StringBuilder sql = new StringBuilder();
+	    sql.append("SELECT post_id, title, writer_id, content, ");
+	    sql.append("       location, pay, work_time, ");
+	    sql.append("       TO_CHAR(reg_date, 'yyyy-mm-dd') AS reg_date, ");
+	    sql.append("       TO_CHAR(deadline, 'yyyy-mm-dd') AS deadline ");
+	    sql.append("  FROM tbl_job_post ");
+	    sql.append(" WHERE post_id = ? ");
 
-		StringBuilder sql = new StringBuilder();
-		sql.append("select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date ");
-		sql.append("  from tbl_job_post ");
-		sql.append(" where no = ? ");
-		
-		try(
-			// AutoCloseable 상속받은 객체 생성 가능
-			Connection conn = new ConnectionFactory().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-		) {
-			
-			pstmt.setInt(1, boardNo);
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				int no = rs.getInt("no");
-				String title = rs.getString("title");
-				String writer = rs.getString("writer");
-				String content = rs.getString("content");
-				int viewCnt = rs.getInt("view_cnt");
-				String regDate = rs.getString("reg_date");
-				
-				BoardVO board = new BoardVO(no, title, writer, content, viewCnt, regDate, regDate, regDate);
-				return board;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return null;
+	    try (
+	        Connection conn = new ConnectionFactory().getConnection();
+	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+	    ) {
+	        pstmt.setInt(1, postId);
+
+	        ResultSet rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	        	 	int post = rs.getInt("post_id");
+		            String title = rs.getString("title");
+		            String writerId = rs.getString("writer_id");
+		            String location = rs.getString("location");
+		            int pay = rs.getInt("pay");
+		            String workTime = rs.getString("work_time");
+		            String regDate = rs.getString("reg_date");
+		            String deadline = rs.getString("deadline");
+		            BoardVO job = new BoardVO(post, title, writerId, location, pay, workTime, regDate, deadline);
+
+
+	            return job;
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return null;
 	}
+
 	
 	@Override
 	public void updateBoard(BoardVO board) {
