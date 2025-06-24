@@ -4,29 +4,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>    
+
 <%
 	// http://localhost:8080/Board-WEB/board/detail.jsp?no=3 요청
-	/*
-		 작업순서
-		 1. 파라미터 추출(no: 게시판번호)
-		 2. DB에서 해당게시글 조회 
-		 3. 조회된 게시글을 공유영역 저장
-		 4. 화면 출력
-	*/
-	
-	int no = Integer.parseInt(request.getParameter("no"));
-	
+
+	// 1. 파라미터 추출
+	String paramNo = request.getParameter("no");
+	int no = 0;
+
+	if (paramNo == null || paramNo.trim().isEmpty()) {
+	    out.println("<script>alert('잘못된 접근입니다. 글 번호가 없습니다.'); history.back();</script>");
+	    return;
+	}
+
+	try {
+	    no = Integer.parseInt(paramNo);
+	} catch (NumberFormatException e) {
+	    out.println("<script>alert('글 번호가 잘못되었습니다.'); history.back();</script>");
+	    return;
+	}
+
+	// 2. 게시글 조회
 	BoardDAO boardDao = new BoardDAOImpl();
 	BoardVO board = boardDao.selectBoardByNo(no);
-	
-	request.setAttribute("board", board);
 
+	// 3. 게시글 존재 여부 확인
+	if (board == null) {
+	    out.println("<script>alert('해당 게시글이 존재하지 않습니다.'); history.back();</script>");
+	    return;
+	}
+
+	// 4. 공유영역 저장
+	request.setAttribute("board", board);
 %>    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 상세 보기</title>
 <style>
 	#content > * {
 		width: 80%;
@@ -41,15 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteBtn = document.getElementById("deleteBtn");
     const listBtn = document.getElementById("listBtn");
 
-    // 글 번호를 no로 가져옴
     const postNo = new URLSearchParams(window.location.search).get("no");
 
-    // 목록 버튼
     listBtn?.addEventListener("click", function () {
         window.location.href = "/Board-WEB/board/list.jsp";
     });
 
-    // 수정 버튼
     updateBtn?.addEventListener("click", function () {
         if (postNo) {
             window.location.href = "/Board-WEB/board/update.jsp?no=" + postNo;
@@ -58,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 삭제 버튼
     deleteBtn?.addEventListener("click", function () {
         if (confirm("정말 삭제하시겠습니까?")) {
             if (postNo) {
@@ -76,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		<hr>
 		<h2>상세게시글</h2>
 		<hr>
-		<table border="1" >
+		<table border="1">
 			<tr>
 				<th width="27%">번호</th>
 				<td>${ board.no }</td>
@@ -109,8 +121,3 @@ document.addEventListener("DOMContentLoaded", function () {
 	</div>
 </body>
 </html>
-
-
-
-
-

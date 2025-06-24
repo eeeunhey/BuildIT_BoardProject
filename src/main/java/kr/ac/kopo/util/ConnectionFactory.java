@@ -12,8 +12,8 @@ public class ConnectionFactory {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			String url		= "jdbc:oracle:thin:@localhost:1521:xe";
-			String user 	= "hr";
-			String password = "hr";
+			String user 	= "webProject";
+			String password = "1111";
 			
 			conn = DriverManager.getConnection(url, user, password);
 		} catch(Exception e) {

@@ -17,35 +17,42 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> selectBoardAll() {
-		List<BoardVO> boardList = new ArrayList<>();
+	    List<BoardVO> boardList = new ArrayList<>();
 
-		StringBuilder sql = new StringBuilder();
-		sql.append("select no, title, writer, to_char(reg_date, 'yyyy-mm-dd') reg_date ");
-		sql.append("  from tbl_board ");
-		sql.append(" order by no desc ");
-		
-		try(
-			Connection conn = new ConnectionFactory().getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-		) {
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				int no = rs.getInt("no");
-				String title = rs.getString("title");
-				String writer = rs.getString("writer");
-				String regDate = rs.getString("reg_date");
-				BoardVO board = new BoardVO(no, title, writer, regDate);
-				
-				boardList.add(board);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return boardList;
+	    StringBuilder sql = new StringBuilder();
+	    sql.append("SELECT post_id, title, writer_id, location, pay, work_time, ");
+	    sql.append("       TO_CHAR(reg_date, 'YYYY-MM-DD') reg_date, ");
+	    sql.append("       TO_CHAR(deadline, 'YYYY-MM-DD') deadline ");
+	    sql.append("  FROM tbl_job_post ");
+	    sql.append(" ORDER BY post_id DESC");
+
+	    try (
+	        Connection conn = new ConnectionFactory().getConnection();
+	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+	    ) {
+	        ResultSet rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            int postId = rs.getInt("post_id");
+	            String title = rs.getString("title");
+	            String writerId = rs.getString("writer_id");
+	            String location = rs.getString("location");
+	            int pay = rs.getInt("pay");
+	            String workTime = rs.getString("work_time");
+	            String regDate = rs.getString("reg_date");
+	            String deadline = rs.getString("deadline");
+
+	            BoardVO job = new BoardVO(postId, title, writerId, location, pay, workTime, regDate, deadline);
+	            boardList.add(job);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return boardList;
 	}
+
 
 	@Override
 	public void insertBoard(BoardVO newBoard) {
@@ -58,7 +65,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("select no, title, writer, content, view_cnt, to_char(reg_date, 'yyyy-mm-dd') as reg_date ");
-		sql.append("  from tbl_board ");
+		sql.append("  from tbl_job_post ");
 		sql.append(" where no = ? ");
 		
 		try(
@@ -77,7 +84,7 @@ public class BoardDAOImpl implements BoardDAO {
 				int viewCnt = rs.getInt("view_cnt");
 				String regDate = rs.getString("reg_date");
 				
-				BoardVO board = new BoardVO(no, title, writer, content, viewCnt, regDate);
+				BoardVO board = new BoardVO(no, title, writer, content, viewCnt, regDate, regDate, regDate);
 				return board;
 			}
 			

@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판리스트</title>
+<title>알바 게시판</title>
 <script>
 	window.onload = function() {
-		let addBtn = document.querySelector('#addBtn')
+		let addBtn = document.querySelector('#addBtn');
 		addBtn.addEventListener('click', function() {
-			
-			location.href = "/Board-WEB/board/writeForm.do"
-		})
+			location.href = "/Board-WEB/job/writeForm.do"; // 알바 글 등록 폼으로 이동
+		});
 	}
 </script>
 <link rel="stylesheet" href="/Board-WEB/resources/css/layout.css">
@@ -26,54 +25,45 @@
 	<section>
 		<div align="center">
 			<hr>
-			<h2>전체게시판</h2>
-			<hr>
-			<br>
-			
+			<h2>알바 게시판</h2>
+			<hr><br>
+
 			<table style="width: 100%;">
 				<tr>
-					<th width="7%">번호</th>
+					<th width="5%">번호</th>
 					<th>제목</th>
-					<th width="15%">작성자</th>
-					<th width="17%">등록일</th>
+					<th width="12%">작성자</th>
+					<th width="10%">지역</th>
+					<th width="8%">시급</th>
+					<th width="15%">근무시간</th>
+					<th width="12%">등록일</th>
+					<th width="12%">마감일</th>
 				</tr>
-				
-				<c:forEach items="${ boardList }" var="board" >
-						<tr>
-							<td>${ board.no }</td>
-							<td>
-								<a href="detail.jsp?no=${ board.no }">
-									<c:out value="${ board.title }" />
-								</a>
-							</td>
-							<td>${ board.writer }</td>
-							<td>${ board.regDate }</td>
-						</tr>
-						
-				</c:forEach>		
+
+				<c:forEach items="${ boardList }" var="post">
+					<tr>
+						<td style="color: gray;">${ post.postId }</td>
+						<td style="color: gray;">
+							<a href="detail.jsp?postId=${ post.postId }">
+								<c:out value="${ post.title }" />
+							</a>
+						</td>
+						<td style="color: gray;">${ post.writerId }</td>
+						<td style="color: gray;">${ post.location }</td>
+						<td style="color: gray;">${ post.pay }</td>
+						<td style="color: gray;">${ post.workTime }</td>
+						<td style="color: gray;">${ post.regDate }</td>
+						<td style="color: gray;">${ post.deadline }</td>
+					</tr>
+				</c:forEach>
 			</table>
+
 			<br>
-			<button id="addBtn">새글등록</button>
+			<button id="addBtn">알바 글 등록</button>
 		</div>
 	</section>
 	<footer>
-		<%@ include file="/include/footer.jsp" %>
+		<%@ include file="/include/footer.jsp"%>
 	</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

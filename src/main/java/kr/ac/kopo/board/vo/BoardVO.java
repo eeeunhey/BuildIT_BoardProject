@@ -1,41 +1,39 @@
 package kr.ac.kopo.board.vo;
 
-public class BoardVO {
 
-	private int no;
-	private String title;
-	private String writer;
-	private String content;
-	private int viewCnt;
-	private String regDate;
+public class BoardVO {
 	
+	private int postId;
+	private String title;
+	private String writerId;
+	private String content;
+	private String location;
+	private int pay;
+	private String workTime;
+	private String regDate;
+	private String deadline;
+
 	public BoardVO() {
 	}
 
-	public BoardVO(int no, String title, String writer, String content, int viewCnt, String regDate) {
-		super();
-		this.no = no;
+	public BoardVO(int postId, String title, String writerId, String location,
+	                 int pay, String workTime, String regDate, String deadline) {
+		this.postId = postId;
 		this.title = title;
-		this.writer = writer;
-		this.content = content;
-		this.viewCnt = viewCnt;
+		this.writerId = writerId;
+		this.location = location;
+		this.pay = pay;
+		this.workTime = workTime;
 		this.regDate = regDate;
+		this.deadline = deadline;
 	}
 
-	public BoardVO(int no, String title, String writer, String regDate) {
-		super();
-		this.no = no;
-		this.title = title;
-		this.writer = writer;
-		this.regDate = regDate;
+	public int getPostId() {
+		return postId;
 	}
 
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
 	public String getTitle() {
@@ -46,12 +44,12 @@ public class BoardVO {
 		this.title = title;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getWriterId() {
+		return writerId;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
 	}
 
 	public String getContent() {
@@ -62,12 +60,28 @@ public class BoardVO {
 		this.content = content;
 	}
 
-	public int getViewCnt() {
-		return viewCnt;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setViewCnt(int viewCnt) {
-		this.viewCnt = viewCnt;
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public int getPay() {
+		return pay;
+	}
+
+	public void setPay(int pay) {
+		this.pay = pay;
+	}
+
+	public String getWorkTime() {
+		return workTime;
+	}
+
+	public void setWorkTime(String workTime) {
+		this.workTime = workTime;
 	}
 
 	public String getRegDate() {
@@ -78,12 +92,19 @@ public class BoardVO {
 		this.regDate = regDate;
 	}
 
+	public String getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+
 	@Override
 	public String toString() {
-		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", viewCnt="
-				+ viewCnt + ", regDate=" + regDate + "]";
+		return "JobPostVO [postId=" + postId + ", title=" + title + ", writerId=" + writerId +
+		       ", location=" + location + ", pay=" + pay + ", workTime=" + workTime +
+		       ", regDate=" + regDate + ", deadline=" + deadline + "]";
 	}
-	
-	
-	
 }
+
