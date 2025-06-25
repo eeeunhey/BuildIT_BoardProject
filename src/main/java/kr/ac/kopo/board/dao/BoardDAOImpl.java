@@ -27,7 +27,8 @@ public class BoardDAOImpl implements BoardDAO {
 	    sql.append(" ORDER BY post_id DESC");
 
 	    try (
-	    		
+	    		//커넥션 객체 / prepare 객체 들어감
+	    		//
 	    		
 	        Connection conn = new ConnectionFactory().getConnection();
 	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -58,9 +59,27 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void insertBoard(BoardVO newBoard) {
-		// TODO Auto-generated method stub
-		
-	}
+
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO tbl_board(no, title, writer, content, location, pay, work_time, deadline) ");
+			sql.append("VALUES(seq_tbl_board_no.nextval, ?, ?, ?, ?, ?, ?, ?)");
+
+			try (
+				Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			) {
+				pstmt.setString(1, newBoard.getTitle());
+				pstmt.setString(3, newBoard.getContent());
+				pstmt.setString(4, newBoard.getLocation());
+				pstmt.setInt(5, newBoard.getPay());
+				pstmt.setString(6, newBoard.getWorkTime());
+				pstmt.setString(7, newBoard.getDeadline()); // 날짜는 String으로 저장한다고 가정
+
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 	@Override
 	public BoardVO selectBoardByNo(int postId) {

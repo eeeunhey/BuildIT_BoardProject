@@ -21,7 +21,8 @@ public class HandlerMapping {
 			
 			Set<Object> keys = prop.keySet();
 			for(Object key : keys) {
-//				System.out.println(key);
+//				System.out.println(key);//주소키 값을 가져온다
+				// 프로퍼티에 이름을 가져온다
 				String className = prop.getProperty(key.toString());
 				System.out.println(className);
 				

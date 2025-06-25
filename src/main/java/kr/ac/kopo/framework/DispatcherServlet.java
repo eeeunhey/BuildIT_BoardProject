@@ -13,10 +13,12 @@ import kr.ac.kopo.controller.BoardListController;
 public class DispatcherServlet extends HttpServlet {
 
 	private HandlerMapping mappings;
+	// init 서비스가 알 수 있게 멤버변수 생성
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		mappings = new HandlerMapping();
+
 	}
 
 	@Override
