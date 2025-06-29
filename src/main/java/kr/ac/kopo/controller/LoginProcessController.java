@@ -8,32 +8,32 @@ import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
 
 public class LoginProcessController implements Controller {
-	
+
 	private MemberService memberService;
-	
+
 	public LoginProcessController() {
 		memberService = new MemberService();
 	}
 
-
 	@Override
-    public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        // 파라미터 추출(id, password)
-        String id = request.getParameter("id");
-        String password = request.getParameter("password");
+		// 파라미터 추출(id, password)
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
 
-        System.out.println("id : " + id + ", password : " + password);
+		System.out.println("id : " + id + ", password : " + password);
 
-        // DB(t_member)에서 로그인여부 판단
-        MemberVO member = new MemberVO(id, password);
+		// DB(t_member)에서 로그인여부 판단
+		MemberVO member = new MemberVO(id, password);
 		MemberVO userVO = memberService.login(member);
-		
+
 		// 판단여부에 따른 결과 응답(response)
 		String url = "";
-		if(userVO == null) {
+		if (userVO == null) {
 			// 로그인 실패
-			url = "redirect:/login.do";
+			request.setAttribute("msg", "아이디 또는 비밀번호가 올바르지 않습니다.");
+			url = "/login/login.do";
 		} else {
 			// 로그인 성공
 			url = "redirect:/";
@@ -41,6 +41,7 @@ public class LoginProcessController implements Controller {
 			HttpSession session = request.getSession();
 			session.setAttribute("userVO", userVO);
 		}
-		
-		return url;    }
+
+		return url;
+	}
 }

@@ -39,16 +39,48 @@
 				alt="오늘의 토픽 이미지" class="topic-bg-img" />
 		</div>
 
-		<!-- 📢 배너 광고 -->
-		<div class="banner-ad">
-			<img
-				src="/Board-WEB/resources/images/technology.png" 
-				alt="빗썸 채용 배너" style="width: 100%; border-radius: 12px;" />
+		<div class="job-picks">
+			<h4>요즘 뜨는 IT 구인공고</h4>
+			<div class="collection-list">
+
+				<div class="collection-card">
+					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일1" />
+					<div class="collection-info">
+						<p class="title">백엔드 개발자 - Spring/MyBatis</p>
+						<p class="meta">서울 · 시급 20,000원 · 마감 D-3</p>
+					</div>
+				</div>
+
+				<div class="collection-card">
+					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일2" />
+					<div class="collection-info">
+						<p class="title">프론트엔드 개발자 - React</p>
+						<p class="meta">부산 · 월급 300만원 · 마감 D-5</p>
+					</div>
+				</div>
+
+				<div class="collection-card">
+					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일3" />
+					<div class="collection-info">
+						<p class="title">AI 모델 학습 데이터 가공</p>
+						<p class="meta">재택 가능 · 일급 15만원 · 마감 D-2</p>
+					</div>
+				</div>
+
+				<div class="collection-card">
+					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일4" />
+					<div class="collection-info">
+						<p class="title">IoT 기반 시스템 테스트</p>
+						<p class="meta">대전 · 시급 18,000원 · 마감 D-1</p>
+					</div>
+				</div>
+
+			</div>
 		</div>
 
 		<!-- 🌟 에디터 추천 컬렉션 -->
 		<div class="editor-picks">
-			<h3>요즘 에디터의 추천 컬렉션</h3>
+			<h3>요즘 뜨는 인기 컬렉션</h3>
 			<div class="collection-list">
 
 				<div class="collection-card">
@@ -68,9 +100,7 @@
 				</div>
 
 				<div class="collection-card">
-					<img
-						src="/Board-WEB/resources/images/technology.png" 
-						alt="썸네일3" />
+					<img src="/Board-WEB/resources/images/technology.png" alt="썸네일3" />
 					<div class="collection-info">
 						<p class="title">PICK IT 보따리 컬렉션 모음</p>
 						<p class="meta">조회수 378 · 좋아요 7 · 댓글 7</p>
@@ -78,9 +108,7 @@
 				</div>
 
 				<div class="collection-card">
-					<img
-						src="/Board-WEB/resources/images/technology.png" 
-						alt="썸네일4" />
+					<img src="/Board-WEB/resources/images/technology.png" alt="썸네일4" />
 					<div class="collection-info">
 						<p class="title">요즘IT도 광고해요</p>
 						<p class="meta">조회수 283 · 좋아요 3 · 댓글 3</p>

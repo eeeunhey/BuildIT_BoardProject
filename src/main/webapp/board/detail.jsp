@@ -89,9 +89,20 @@ td {
 
 	<br>
 	<div align="center">
-		<button id="listBtn">목록</button>
-		<button id="">수정</button>
-		<button id="">삭제</button>
+		<c:choose>
+			<c:when test="${sessionScope.userType eq 'company'}">
+				<button id="listBtn">목록</button>
+				<button id="updateBtn">수정</button>
+				<button id="deleteBtn">삭제</button>
+			</c:when>
+			<c:when test="${sessionScope.userType eq 'user'}">
+				<button id="listBtn">목록</button>
+				<button id="applyBtn">지원</button>
+			</c:when>
+			<c:otherwise>
+				<button id="listBtn">목록</button>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 </body>
