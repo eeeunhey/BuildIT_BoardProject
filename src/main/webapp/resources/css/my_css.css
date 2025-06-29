@@ -1,128 +1,172 @@
-/* 테이블 전체 구조를 좌우 분할처럼 보이게 */
-table {
+/* ---------- 기본 설정 ---------- */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:  #ffffff;
+  color: #222;
+}
+
+.main-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ---------- 오늘의 토픽 영역 ---------- */
+.today-topic-container {
+  position: relative;
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 12px; /* 행 사이 간격 */
+  height: 260px;  /* 크기 조절 가능 */
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
-/* 테이블 헤더 */
-table th {
-  font-size: 14px;
-  color: #555;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-}
-
-/* 테이블 각 행 카드 느낌 */
-table tr {
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-}
-
-/* 셀 안 여백 */
-table td {
-  padding: 12px;
-  vertical-align: middle;
-  color: #333;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* 기업명: 작은 회색 글씨 */
-td.company {
-  color: #888;
-  font-size: 13px;
-}
-
-/* 공고 제목: 굵고 진하게 */
-td.title a {
-  font-size: 16px;
-  font-weight: bold;
-  color: #111;
-  text-decoration: none;
-}
-
-/* 급여 라벨(시급/월급) */
-td.salary-label {
-  color: #a94442;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* 급여 숫자 강조 */
-td.salary-amount {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-}
-
-/* 등록일 */
-td.date {
-  font-size: 13px;
-  color: #777;
-}
-/* 테이블 전체 구조를 좌우 분할처럼 보이게 */
-table {
+.topic-bg-img {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 12px; /* 행 사이 간격 */
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* 테이블 헤더 */
-table th {
+.topic-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.1), transparent);
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.topic-badge {
+  background-color: #845EF7;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
   font-size: 14px;
-  color: #555;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
+  width: fit-content;
 }
 
-/* 테이블 각 행 카드 느낌 */
-table tr {
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
+.topic-info-text {
+  margin-bottom: 10px;
 }
 
-/* 셀 안 여백 */
-table td {
+.topic-info-text h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.topic-info-text span {
+  font-size: 13px;
+  color: #ddd;
+}
+
+.slide-control {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pause-icon {
+  font-size: 14px;
+}
+
+/* ---------- 배너 광고 ---------- */
+.banner-ad {
+  margin: 40px 0;
+}
+
+.banner-ad img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* ---------- 에디터 추천 컬렉션 ---------- */
+.editor-picks h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.collection-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.collection-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.collection-card:hover {
+  transform: translateY(-4px);
+}
+
+.collection-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.collection-info {
   padding: 12px;
-  vertical-align: middle;
-  color: #333;
-  font-size: 14px;
-  text-align: center;
 }
 
-/* 기업명: 작은 회색 글씨 */
-td.company {
+.collection-info .title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.collection-info .meta {
+  font-size: 13px;
   color: #888;
-  font-size: 13px;
 }
 
-/* 공고 제목: 굵고 진하게 */
-td.title a {
+/* ---------- 회원가입 CTA ---------- */
+.cta-signup {
+  background: linear-gradient(to right, #eff0ff, #f2f7ff);
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  margin: 60px 0;
+}
+
+.cta-signup p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.signup-btn {
+  background-color: #7f5af0;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
-  color: #111;
-  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-/* 급여 라벨(시급/월급) */
-td.salary-label {
-  color: #a94442;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* 급여 숫자 강조 */
-td.salary-amount {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-}
-
-/* 등록일 */
-td.date {
-  font-size: 13px;
-  color: #777;
+.signup-btn:hover {
+  background-color: #6941c6;
 }

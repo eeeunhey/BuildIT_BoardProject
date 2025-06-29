@@ -1,46 +1,97 @@
 @charset "UTF-8";
-.job-conditions {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  background: #f9f9f9;
-  padding: 30px;
-  border-radius: 12px;
-  margin: 30px auto;
-  width: 90%;
-  max-width: 1000px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+.list-container {
+	max-width: 900px;
+	margin: 150px auto 40px auto;
+	padding: 0 20px;
+	font-family: 'Arial', sans-serif;
 }
 
-.condition-box {
-  flex: 1;
+h2 {
+	margin-bottom: 15px;
+	font-size: 24px;
+	color: #333;
 }
 
-.condition-box table {
-  width: 100%;
-  border-collapse: collapse;
+.project-count {
+	font-size: 14px;
+	color: #888;
+	margin-bottom: 20px;
 }
 
-.condition-box th {
-  text-align: left;
-  color: #666;
-  width: 100px;
-  padding: 10px 5px;
-  vertical-align: top;
+.project-card {
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+	transition: box-shadow 0.3s ease;
+	background-color: #fff;
 }
 
-.condition-box td {
-  padding: 10px 5px;
-  color: #333;
-  line-height: 1.5;
+.project-card:hover {
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.highlight {
-  background: #e5f2fb;
-  color: #1379c6;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.9em;
-  margin-right: 6px;
+.card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.card-header h3 {
+	margin: 0;
+	font-size: 18px;
+	color: #333;
+}
+
+.card-header h3 a {
+	text-decoration: none;
+	color: #1a73e8;
+}
+
+.badge {
+	display: inline-block;
+	background-color: #27ae60;
+	color: white;
+	padding: 4px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+.card-body {
+	font-size: 14px;
+	color: #444;
+	line-height: 1.6;
+}
+
+.card-body .info-line {
+	margin-bottom: 6px;
+}
+
+.card-footer {
+	margin-top: 12px;
+	text-align: right;
+	font-size: 13px;
+	color: #777;
+}
+
+.button-area {
+	text-align: right;
+	margin-top: 30px;
+}
+
+#addBtn {
+	background-color: #1a73e8;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+#addBtn:hover {
+	background-color: #1669c1;
 }
