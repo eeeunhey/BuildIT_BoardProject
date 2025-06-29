@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="board.dao.BoardDAO">
+<mapper namespace="board.batisdao.BoardDAO">
 	<!-- namespace 겹치지 않은 이름으로 지정 세미콜론 넣으면 안된다 프리페어객체로 들어간다 태그를 생성하면 id를 생성한다 
 		아이디 중복이 있으면 안된다 구분하기 위해 특정 id값을 부여가 핋요하다 board.dao.BoardDAO.insert 로 호출한다 
 		nampspace+id -->
