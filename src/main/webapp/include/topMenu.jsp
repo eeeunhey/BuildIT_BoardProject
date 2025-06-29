@@ -25,9 +25,9 @@
 
     <div class="main-menu">
       <a href="${pageContext.request.contextPath}/board/list.do">채용정보</a>
-      <a href="#">개인서비스</a>
-      <a href="#">취준성장</a>
-      <a href="#">자료실</a>
+      <a href="#"> 채용 프로그램 </a>
+      <a href="#">취준 성장 잔디</a>
+      <a href="#"> 컬렉션 </a>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
   <div class="right-group">
     <span>${ empty userVO ? "GUEST" : userVO.name }님 환영합니다</span>
     <a href="${pageContext.request.contextPath}/board/signIn.do">회원가입</a>
-    <a href="${pageContext.request.contextPath}/login.do">로그인</a>
+    <a href="${pageContext.request.contextPath}/login/login.do">로그인</a>
   </div>
 </div>
 

@@ -1,44 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공고 등록</title>
 <style>
-	#content > * {
-		width: 80%;
-	}
+#content>* {
+	width: 80%;
+}
 </style>
 <script>
 	let checkForm = function() {
 		let f = document.wForm;
-		if(f.title.value.trim() === '') {
+		if (f.title.value.trim() === '') {
 			alert('제목을 입력해주세요');
 			f.title.focus();
 			return false;
 		}
-		if(f.location.value.trim() === '') {
+		if (f.location.value.trim() === '') {
 			alert('근무지역을 입력해주세요');
 			f.location.focus();
 			return false;
 		}
-		if(f.pay.value.trim() === '') {
+		if (f.pay.value.trim() === '') {
 			alert('급여를 입력해주세요');
 			f.pay.focus();
 			return false;
 		}
-		if(f.workTime.value.trim() === '') {
+		if (f.workTime.value.trim() === '') {
 			alert('근무시간을 입력해주세요');
 			f.workTime.focus();
 			return false;
 		}
-		if(f.deadline.value.trim() === '') {
+		if (f.deadline.value.trim() === '') {
 			alert('마감일을 입력해주세요');
 			f.deadline.focus();
 			return false;
 		}
-		if(f.content.value.trim() === '') {
+		if (f.content.value.trim() === '') {
 			alert('내용을 입력해주세요');
 			f.content.focus();
 			return false;
@@ -57,9 +58,11 @@
 		<div align="center" id="content">
 			<hr>
 			<h2>공고 등록</h2>
-			<hr><br>
-			<form name="wForm" action="write.jsp" method="post" onsubmit="return checkForm()">
-				
+			<hr>
+			<br>
+			<form name="wForm" action="/Board-WEB/board/write.do" method="post"
+				onsubmit="return checkForm()">
+
 				<!-- 로그인된 사용자 ID를 서버에 함께 전송 -->
 				<input type="hidden" name="writer" value="${userVO.id}">
 
@@ -82,7 +85,8 @@
 					</tr>
 					<tr>
 						<th>근무시간</th>
-						<td><input type="text" name="workTime" placeholder="예: 오전 9시 ~ 오후 6시"></td>
+						<td><input type="text" name="workTime"
+							placeholder="예: 오전 9시 ~ 오후 6시"></td>
 					</tr>
 					<tr>
 						<th>마감일</th>
@@ -99,7 +103,7 @@
 		</div>
 	</section>
 	<footer>
-		<%@ include file="/include/footer.jsp" %>
+		<%@ include file="/include/footer.jsp"%>
 	</footer>
 </body>
 </html>
