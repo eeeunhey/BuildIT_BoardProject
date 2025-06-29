@@ -9,10 +9,6 @@ import java.util.List;
 import kr.ac.kopo.board.vo.BoardVO;
 import kr.ac.kopo.util.ConnectionFactory;
 
-/**
- * @author 홍길동
- */
-
 public class BoardDAOImpl implements BoardDAO {
 
 	@Override
@@ -20,16 +16,13 @@ public class BoardDAOImpl implements BoardDAO {
 	    List<BoardVO> boardList = new ArrayList<>();
 
 	    StringBuilder sql = new StringBuilder();
-	    sql.append("SELECT post_id, title, writer_id, location, pay, work_time, ");
+	    sql.append("SELECT post_id, title, writer_id, content, location, pay, work_time, ");
 	    sql.append("       TO_CHAR(reg_date, 'YYYY-MM-DD') reg_date, ");
 	    sql.append("       TO_CHAR(deadline, 'YYYY-MM-DD') deadline ");
 	    sql.append("  FROM tbl_job_post ");
 	    sql.append(" ORDER BY post_id DESC");
 
 	    try (
-	    		//커넥션 객체 / prepare 객체 들어감
-	    		//
-	    		
 	        Connection conn = new ConnectionFactory().getConnection();
 	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 	    ) {
@@ -39,13 +32,14 @@ public class BoardDAOImpl implements BoardDAO {
 	            int postId = rs.getInt("post_id");
 	            String title = rs.getString("title");
 	            String writerId = rs.getString("writer_id");
+	            String content = rs.getString("content");
 	            String location = rs.getString("location");
 	            int pay = rs.getInt("pay");
 	            String workTime = rs.getString("work_time");
 	            String regDate = rs.getString("reg_date");
 	            String deadline = rs.getString("deadline");
 
-	            BoardVO job = new BoardVO(postId, title, writerId, location, pay, workTime, regDate, deadline);
+	            BoardVO job = new BoardVO(postId, title, writerId, content, location, pay, workTime, regDate, deadline);
 	            boardList.add(job);
 	        }
 
@@ -56,30 +50,31 @@ public class BoardDAOImpl implements BoardDAO {
 	    return boardList;
 	}
 
-
 	@Override
 	public void insertBoard(BoardVO newBoard) {
+	    StringBuilder sql = new StringBuilder();
+	    sql.append("INSERT INTO tbl_job_post( ");
+	    sql.append("post_id, title, writer_id, content, location, pay, work_time, reg_date, deadline) ");
+	    sql.append("VALUES(seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'))");
 
-			StringBuilder sql = new StringBuilder();
-			sql.append("INSERT INTO tbl_board(no, title, writer, content, location, pay, work_time, deadline) ");
-			sql.append("VALUES(seq_tbl_board_no.nextval, ?, ?, ?, ?, ?, ?, ?)");
+	    try (
+	        Connection conn = new ConnectionFactory().getConnection();
+	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+	    ) {
+	        pstmt.setString(1, newBoard.getTitle());
+	        pstmt.setString(2, newBoard.getWriterId());
+	        pstmt.setString(3, newBoard.getContent());
+	        pstmt.setString(4, newBoard.getLocation());
+	        pstmt.setInt(5, newBoard.getPay());
+	        pstmt.setString(6, newBoard.getWorkTime());
+	        pstmt.setString(7, newBoard.getRegDate());
+	        pstmt.setString(8, newBoard.getDeadline());
 
-			try (
-				Connection conn = new ConnectionFactory().getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-			) {
-				pstmt.setString(1, newBoard.getTitle());
-				pstmt.setString(3, newBoard.getContent());
-				pstmt.setString(4, newBoard.getLocation());
-				pstmt.setInt(5, newBoard.getPay());
-				pstmt.setString(6, newBoard.getWorkTime());
-				pstmt.setString(7, newBoard.getDeadline()); // 날짜는 String으로 저장한다고 가정
-
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+	        pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 
 	@Override
 	public BoardVO selectBoardByNo(int postId) {
@@ -100,17 +95,17 @@ public class BoardDAOImpl implements BoardDAO {
 	        ResultSet rs = pstmt.executeQuery();
 
 	        if (rs.next()) {
-	        	 	int post = rs.getInt("post_id");
-		            String title = rs.getString("title");
-		            String writerId = rs.getString("writer_id");
-		            String location = rs.getString("location");
-		            int pay = rs.getInt("pay");
-		            String workTime = rs.getString("work_time");
-		            String regDate = rs.getString("reg_date");
-		            String deadline = rs.getString("deadline");
-		            BoardVO job = new BoardVO(post, title, writerId, location, pay, workTime, regDate, deadline);
+	            int post = rs.getInt("post_id");
+	            String title = rs.getString("title");
+	            String writerId = rs.getString("writer_id");
+	            String content = rs.getString("content");
+	            String location = rs.getString("location");
+	            int pay = rs.getInt("pay");
+	            String workTime = rs.getString("work_time");
+	            String regDate = rs.getString("reg_date");
+	            String deadline = rs.getString("deadline");
 
-
+	            BoardVO job = new BoardVO(post, title, writerId, content, location, pay, workTime, regDate, deadline);
 	            return job;
 	        }
 
@@ -121,16 +116,14 @@ public class BoardDAOImpl implements BoardDAO {
 	    return null;
 	}
 
-	
 	@Override
 	public void updateBoard(BoardVO board) {
-		// TODO Auto-generated method stub
-		
+		// TODO: 구현 예정
 	}
 
 	@Override
 	public void deleteBoardByNo(int boardNo) {
-	    String sql = "DELETE FROM board WHERE no = ?";
+	    String sql = "DELETE FROM tbl_job_post WHERE post_id = ?";
 	    try (Connection conn = new ConnectionFactory().getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        pstmt.setInt(1, boardNo);
@@ -139,5 +132,4 @@ public class BoardDAOImpl implements BoardDAO {
 	        e.printStackTrace();
 	    }
 	}
-
 }
