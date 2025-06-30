@@ -1,71 +1,75 @@
 @charset "UTF-8";
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-    padding: 30px;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 30px;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px #ccc;
+/* 전체 조건 박스 래퍼 */
+.job-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
+/* 각각의 카드 박스 */
+.condition-box {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid #00b894; /* 강조색 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  padding: 20px 24px;
 }
 
-label {
-    display: block;
-    margin-top: 20px;
+/* 테이블 정렬 */
+.condition-box table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
+.condition-box th {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  padding: 12px 8px;
+  vertical-align: top;
+  width: 120px;
 }
 
-.radio-group {
-    margin-top: 10px;
+.condition-box td {
+  padding: 12px 8px;
+  color: #555;
+  line-height: 1.6;
 }
 
-.radio-group input {
-    margin-right: 5px;
+.highlight {
+  font-weight: bold;
+  color: #00b894;
+  margin-right: 4px;
 }
 
-.verify-btn {
-    width: 28%;
-    float: right;
-    padding: 10px;
-    margin-top: 5px;
+/* 버튼 영역 */
+div[align="center"] {
+  margin-top: 30px;
 }
 
-.clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
+/* 버튼 스타일 */
+button {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.btn {
-    margin-top: 30px;
-    background-color: #FFD600;
-    color: black;
-    font-weight: bold;
-    padding: 15px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #ffcc00;
+button:hover {
+  background-color: #019875;
 }

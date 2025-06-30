@@ -1,1 +1,73 @@
 @charset "UTF-8";
+/* 전체 컨텐츠 영역 */
+#content {
+  background: #fff;
+  padding: 40px;
+  margin: 0 auto;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 제목 */
+#content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* 테이블 레이아웃 */
+#content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#content th {
+  text-align: left;
+  background-color: #f7f7f7;
+  color: #444;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  width: 25%;
+}
+
+#content td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 입력 필드 */
+#content input[type="text"],
+#content input[type="number"],
+#content input[type="date"],
+#content textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#content textarea {
+  resize: vertical;
+}
+
+/* 등록 버튼 */
+#content button[type="submit"] {
+  background-color: #266533;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s ease;
+}
+
+#content button[type="submit"]:hover {
+  background-color: #019875;
+}

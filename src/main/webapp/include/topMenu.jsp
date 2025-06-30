@@ -25,7 +25,7 @@
 
     <div class="main-menu">
       <a href="${pageContext.request.contextPath}/board/list.do">채용정보</a>
-      <a href="#"> 채용 프로그램 </a>
+      <a href="${pageContext.request.contextPath}/jobItInfo/careerGrowth.do"> 채용 프로그램 </a>
       <a href="#">취준 성장 잔디</a>
       <a href="#"> 컬렉션 </a>
     </div>

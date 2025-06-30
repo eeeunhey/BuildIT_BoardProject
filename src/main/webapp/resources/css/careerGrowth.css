@@ -1,0 +1,75 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f9fb;
+}
+
+.container {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* 상단 타이틀 */
+.header-box {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-box h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.header-box p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* 정보 섹션 */
+.info-box, .application-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.info-box h2,
+.application-box h2 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 16px;
+}
+
+.info-list {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* 지원 내역 테이블 */
+.app-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.app-table th,
+.app-table td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.app-table th {
+    background-color: #f1f3f5;
+    color: #333;
+}
+
+.app-table tr:hover {
+    background-color: #f8f8f8;
+}

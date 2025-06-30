@@ -47,8 +47,8 @@
 		return true;
 	}
 </script>
-<link rel="stylesheet" href="/Board-WEB/resources/css/layout.css">
-<link rel="stylesheet" href="/Board-WEB/resources/css/my_css.css">
+
+<link rel="stylesheet" href="/Board-WEB/resources/css/writeForm.css">
 </head>
 <body>
 	<header>
