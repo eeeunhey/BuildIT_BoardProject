@@ -2,6 +2,7 @@ package kr.ac.kopo.board.dao;
 
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -62,20 +63,20 @@ public class BoardDAOImpl implements BoardDAO {
 	    StringBuilder sql = new StringBuilder();
 	    sql.append("INSERT INTO tbl_job_post( ");
 	    sql.append("post_id, title, writer_id, content, location, pay, work_time, reg_date, deadline) ");
-	    sql.append("VALUES(seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'))");
+	    sql.append("VALUES(seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'))");
+
 
 	    try (
 	        Connection conn = new ConnectionFactory().getConnection();
 	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 	    ) {
-	        pstmt.setString(1, newBoard.getTitle());
-	        pstmt.setString(2, newBoard.getWriterId());
-	        pstmt.setString(3, newBoard.getContent());
-	        pstmt.setString(4, newBoard.getLocation());
-	        pstmt.setInt(5, newBoard.getPay());
-	        pstmt.setString(6, newBoard.getWorkTime());
-	        pstmt.setString(7, newBoard.getRegDate());
-	        pstmt.setString(8, newBoard.getDeadline());
+	    	pstmt.setString(1, newBoard.getTitle());
+	    	pstmt.setString(2, newBoard.getWriterId());
+	    	pstmt.setString(3, newBoard.getContent());
+	    	pstmt.setString(4, newBoard.getLocation());
+	    	pstmt.setInt(5, newBoard.getPay());
+	    	pstmt.setString(6, newBoard.getWorkTime());
+	    	pstmt.setString(7, newBoard.getDeadline());
 
 	        pstmt.executeUpdate();
 	    } catch (Exception e) {
