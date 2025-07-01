@@ -10,4 +10,7 @@ public interface MemberDAO {
 	 * @return 로그인 성공시 회원정보를 가진 MemberVO 객체 반환, 로그인 실패시 null 반환
 	 */
 	public MemberVO selectMemberByIDPassword(MemberVO loginVO) throws Exception;
+	public MemberVO  findPassword (MemberVO loginVO) throws Exception;
+
+
 }

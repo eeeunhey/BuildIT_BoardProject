@@ -47,5 +47,33 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return null;
 	}
+	
+	@Override
+	public MemberVO findPassword(MemberVO loginVO) throws Exception {
+	    String sql = "SELECT id, name, password, type FROM tbl_member WHERE id = ? AND email = ?";
+
+	    try (
+	        Connection conn = new ConnectionFactory().getConnection();
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+	    ) {
+	    	ResultSet rs = pstmt.executeQuery();
+			
+			pstmt.setString(1, loginVO.getId());
+			pstmt.setString(2, loginVO.getPassword());
+
+	        if (rs.next()) {
+	            MemberVO member = new MemberVO();
+	            member.setId(rs.getString("id"));
+	            member.setName(rs.getString("name"));
+	            member.setPassword(rs.getString("password")); // 주의: 보안상 직접 반환 X
+	            member.setType(rs.getString("type"));
+	            return member;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return null;
+	}
 
 }

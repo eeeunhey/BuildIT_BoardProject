@@ -84,7 +84,8 @@
 				</div>
 
 				<div class="links">
-					<a href="#">회원가입</a> | <a href="#">아이디 찾기</a> | <a href="#">비밀번호
+					<a href="/board/signIn.do">회원가입</a> | <a href="${pageContext.request.contextPath}/login/findAccount.do">아이디 찾기</a> | 
+					<a href="${pageContext.request.contextPath}/login/findAccount.do">비밀번호
 						찾기</a>
 				</div>
 

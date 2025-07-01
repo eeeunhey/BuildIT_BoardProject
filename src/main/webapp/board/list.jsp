@@ -23,7 +23,7 @@
 	</header>
 
 	<section class="list-container">
-		<h2>알바 프로젝트 목록</h2>
+		<h2>프로젝트 찾기</h2>
 		<div class="project-count">${ boardList.size() }개의프로젝트</div>
 
 		<c:forEach items="${ boardList }" var="post">
@@ -56,7 +56,7 @@
 
 		<div class="button-area">
 			<c:if test="${ not empty userVO }">
-				<button id="addBtn">알바 글 등록</button>
+				<button id="addBtn">프로젝트 글 등록</button>
 			</c:if>
 		</div>
 	</section>
