@@ -1,271 +1,122 @@
+@charset "UTF-8";
+
 body {
-  font-family: 'Noto Sans KR', sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #fff;
-}
-
-.login-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 40px 0;
-}
-
-.login-inner {
-  width: 1000px;
-}
-
-.login-main {
-  display: flex;
-  gap: 40px;
-}
-
-/* 왼쪽 구성 */
-.login-left {
-  width: 500px;
-}
-
-/* 탭 */
-.login-tabs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.tab {
-  width: 49%;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  font-weight: bold;
-  color: #999;
-  cursor: pointer;
-}
-.tab.active {
-  border: 2px solid #000;
-  background: #fff;
-  color: #000;
-}
-.tab span {
-  font-weight: normal;
-  font-size: 0.85em;
-}
-
-/* 입력 폼 */
-.login-form-container .input-box {
-  width: 100%;
-  padding: 12px;
-  font-size: 1em;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-
-.input-group {
-  display: flex;
-  gap: 10px;
-}
-
-.login-btn {
-  width: 130px;
-  background-color: #fef176;
-  border: none;
-  font-weight: bold;
-  font-size: 1em;
-  cursor: pointer;
-}
-.login-btn.blue {
-  background-color: #6e9eff;
-  color: white;
-}
-
-/* 체크박스 등 */
-.login-options {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9em;
-  margin-top: 10px;
-}
-.secure span {
-  color: green;
-  font-weight: bold;
-}
-.login-links {
-  font-size: 0.9em;
-  margin-top: 10px;
-}
-
-/* 서비스 안내 */
-.service-box {
-  flex: 1;
-}
-.service-title {
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 20px;
-  padding-bottom: 5px;
-}
-.service-title.personal {
-  background: linear-gradient(to top, #fef176 50%, transparent 50%);
-}
-.service-title.company {
-  background: linear-gradient(to top, #cce0ff 50%, transparent 50%);
-}
-.service-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.icon {
-  font-size: 2em;
-
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 50px auto;
   display: flex;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 40px;
+  gap: 60px;
 }
 
-/* 로그인 폼 영역 */
-.login-section {
-  flex: 2;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
+.left-section,
+.login-box {
+  flex: none;
+  width: 400px;
 }
 
-/* 설명 영역 */
-.side-info {
-  flex: 1;
-  padding: 40px;
-  background-color: #fff;
-  border-left: 1px solid #eee;
-}
-
-.side-info h3 {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.service-item {
-  margin-bottom: 25px;
-}
-
-.service-item strong {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.service-item span {
-  font-size: 14px;
-  color: #555;
-}
-
-/* 탭 */
-.tab-buttons {
-  display: flex;
-  margin-bottom: 30px;
-}
-
-.tab-btn {
-  flex: 1;
+.left-section {
   text-align: center;
-  padding: 15px 0;
+  padding: 20px;
+}
+
+.slogan {
+  font-size: 24px;
   font-weight: bold;
-  cursor: pointer;
-  background-color: #f9f9f9;
-  border-bottom: 3px solid transparent;
-  border-radius: 10px 10px 0 0;
-  font-size: 16px;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-.tab-btn.active {
-  border-bottom: 3px solid #000;
-  background-color: #fff;
+.login-image {
+  max-width: 100%;
+  height: auto;
 }
 
-/* 로그인 폼 내부 */
-.input-group {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 
-.input-fields {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.login-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #333;
+  text-align: center;
 }
 
-.input-fields input {
+.input-field {
+  display: block;
   width: 100%;
-  padding: 12px;
-  font-size: 14px;
+  padding: 14px;
+  margin-bottom: 16px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-#loginBtn,
-.login-form button[type="submit"] {
-  width: 120px;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 25px 0;
-  height: 100%;
 }
 
-/* 기타 요소 */
 .options {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
   font-size: 14px;
+  margin-bottom: 20px;
+  color: #666;
 }
 
-.links {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.links a {
+.link {
   text-decoration: none;
-  color: #555;
-  margin: 0 8px;
+  color: #2196f3;
 }
 
-/* 소셜 로그인 */
-.sns-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.sns-buttons button {
-  flex: 1;
-  margin: 0 5px;
-  padding: 10px 0;
-  font-weight: bold;
-  font-size: 14px;
+.login-btn {
+  width: 100%;
+  background-color: #689cc5;
+  color: white;
+  font-size: 16px;
+  padding: 14px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  color: #fff;
+  margin-bottom: 20px;
+}
 
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #aaa;
+}
+
+.social-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.social-btn.google {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.social-btn.kakao {
+  background-color: #FEE500;
+  color: #000;
+  font-weight: bold;
+}
+
+.signup-link {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
 }

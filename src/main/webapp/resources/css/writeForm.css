@@ -1,1 +1,100 @@
 @charset "UTF-8";
+
+/* 공통 폰트 및 색상 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+}
+
+/* 컨텐츠 중앙 정렬 및 여백 */
+#content {
+  max-width: 900px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px 0;
+  width: 25%;
+  font-weight: 600;
+  vertical-align: top;
+}
+
+td {
+  padding: 10px 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  background-color: #f5faff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* 버튼 스타일 */
+button[type="submit"] {
+  margin-top: 30px;
+  background-color: #3b55e6;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  float: right;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #2e47c5;
+}
+
+/* 제목, 구분선 등 */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 30px 0;
+}
+
+/* 작성자 텍스트 */
+td c\\:out {
+  font-size: 15px;
+  color: #666;
+}

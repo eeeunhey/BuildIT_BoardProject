@@ -9,25 +9,36 @@
 <body>
 
 <div class="top-bar">
-  <!-- 왼쪽 그룹: 로고 + 검색창 (가로), 메뉴 (아래) -->
+  <!-- 왼쪽 그룹: 로고 + 검색창 -->
   <div class="left-group">
     <div class="logo-search">
+      <!-- 로고 -->
       <div class="logo">
-      	<a href="${pageContext.request.contextPath}/index.jsp">
-        <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="로고" class="logo-img">
+        <a href="${pageContext.request.contextPath}/index.jsp">
+          <img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="로고" class="logo-img">
         </a>
       </div>
+
+      <!-- 🔍 개선된 검색창 -->
       <form class="search-form" action="${pageContext.request.contextPath}/search.do" method="get">
-        <input type="text" name="keyword" placeholder="어떤 업무를 찾으세요?">
+        <select name="category" class="category-select">
+          <option value="all">전체</option>
+          <option value="job">구인공고</option>
+          <option value="project">프로젝트</option>
+          <option value="study">스터디</option>
+        </select>
+        <input type="text" name="keyword" placeholder="어떤 프로젝트를 찾으세요?" />
         <button type="submit">&#128269;</button>
       </form>
     </div>
 
+    <!-- 메뉴 -->
     <div class="main-menu">
-      <a href="${pageContext.request.contextPath}/board/list.do">채용정보</a>
-      <a href="#"> 채용 프로그램 </a>
-      <a href="#">취준 성장 잔디</a>
-      <a href="#"> 컬렉션 </a>
+      <a href="${pageContext.request.contextPath}/board/writeForm.do">프로젝트 등록</a>
+      <a href="${pageContext.request.contextPath}/board/list.do">프로젝트 탐색</a>
+      <a href="#">나의 성장 잔디</a>
+      <a href="#">강의 / 스터디 정보 공유</a>
+      <a href="#">참여 프로젝트 기록</a>
     </div>
   </div>
 

@@ -34,7 +34,7 @@ public class MyBatisMain {
 		 * System.out.println("삽입완료");
 		 * 
 		 * 
-		 * } catch (Exception e) { e.printStackTrace(); }
+		 * } catch (Exception e) { e.print	StackTrace(); }
 		 */
 
 		

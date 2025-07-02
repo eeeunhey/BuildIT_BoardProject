@@ -48,9 +48,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 	            BoardVO job = new BoardVO(postId, title, writerId, content, location, pay, workTime, regDate, deadline);
 	            boardList.add(job);
+	          
 	        }
 
 	    } catch (Exception e) {
+
 	        e.printStackTrace();
 	    }
 
@@ -62,7 +64,7 @@ public class BoardDAOImpl implements BoardDAO {
 	    StringBuilder sql = new StringBuilder();
 	    sql.append("INSERT INTO tbl_job_post( ");
 	    sql.append("post_id, title, writer_id, content, location, pay, work_time, reg_date, deadline) ");
-	    sql.append("VALUES(seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'))");
+	    sql.append("VALUES( seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'))");
 
 	    try (
 	        Connection conn = new ConnectionFactory().getConnection();
@@ -74,14 +76,16 @@ public class BoardDAOImpl implements BoardDAO {
 	        pstmt.setString(4, newBoard.getLocation());
 	        pstmt.setInt(5, newBoard.getPay());
 	        pstmt.setString(6, newBoard.getWorkTime());
-	        pstmt.setString(7, newBoard.getRegDate());
-	        pstmt.setString(8, newBoard.getDeadline());
+	        pstmt.setString(7, newBoard.getDeadline());
 
 	        pstmt.executeUpdate();
+	        System.out.println("게시글 등록 시도: " + newBoard);
 	    } catch (Exception e) {
+	        System.out.println("게시글 등록 중 오류 발생");
 	        e.printStackTrace();
 	    }
 	}
+
 
 	@Override
 	public BoardVO selectBoardByNo(int postId) {

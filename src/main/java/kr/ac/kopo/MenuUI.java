@@ -1,19 +1,19 @@
 package kr.ac.kopo;
 
+import java.util.List;
+
 import kr.ac.kopo.board.batisdao.BoardDAO;
 import kr.ac.kopo.board.vo.BoardVO;
 
 public class MenuUI {
 	
-	BoardDAO boardDao;
-	
-	
-	
+	BoardDAO boardDao; 
 
 	public MenuUI() {
-		boardDao = new BoardDAO();
-		
+		boardDao = new BoardDAO();	
 	}
+	
+
 
 	private void addBoard() {
 		
@@ -30,11 +30,22 @@ public class MenuUI {
 		
 		boardDao.insert(board);
 	}
+	// 보드값 출력하기
+	private void searchAllBoard() {
+		//boardDAO에서 만든 메소드 가져오기
+		List<BoardVO> list = boardDao.searchAll();
+		for(BoardVO board : list ) {
+			System.out.println(board);
+		}
+		
+	}
 
 	public void execute() {
 		// 메소드 생성
 		// 인서트 보드 하기
-		addBoard();
+		//addBoard();
+		
+		searchAllBoard();
 
 	}
 
