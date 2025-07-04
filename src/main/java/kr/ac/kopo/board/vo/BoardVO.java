@@ -2,7 +2,7 @@ package kr.ac.kopo.board.vo;
 
 public class BoardVO {
 
-    private int postId;
+    private int post_id;
     private String title;
     private String writerId;
     private String content;
@@ -17,9 +17,9 @@ public class BoardVO {
     }
 
     // 전체 필드 생성자
-    public BoardVO(int postId, String title, String writerId, String content,
+    public BoardVO(int post_id, String title, String writerId, String content,
                    String location, int pay, String workTime, String regDate, String deadline) {
-        this.postId = postId;
+        this.post_id = post_id;
         this.title = title;
         this.writerId = writerId;
         this.content = content;
@@ -45,11 +45,11 @@ public class BoardVO {
 
     // Getter & Setter
     public int getPostId() {
-        return postId;
+        return post_id;
     }
 
     public void setPostId(int postId) {
-        this.postId = postId;
+        this.post_id = postId;
     }
 
     public String getTitle() {
@@ -118,7 +118,7 @@ public class BoardVO {
 
     @Override
     public String toString() {
-        return "BoardVO [postId=" + postId + ", title=" + title + ", writerId=" + writerId +
+        return "BoardVO [postId=" + post_id + ", title=" + title + ", writerId=" + writerId +
                ", content=" + content + ", location=" + location + ", pay=" + pay +
                ", workTime=" + workTime + ", regDate=" + regDate + ", deadline=" + deadline + "]";
     }

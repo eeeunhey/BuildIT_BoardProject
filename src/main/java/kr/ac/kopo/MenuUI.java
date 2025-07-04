@@ -31,22 +31,40 @@ public class MenuUI {
 		boardDao.insert(board);
 	}
 	// 보드값 출력하기
-	private void searchAllBoard() {
+	private void selectAllBoard() {
 		//boardDAO에서 만든 메소드 가져오기
-		List<BoardVO> list = boardDao.searchAll();
+		List<BoardVO> list = boardDao.selectAll();
 		for(BoardVO board : list ) {
 			System.out.println(board);
 		}
 		
 	}
+	
+	private void selectByNo() {
+		// 게시글 번호를 가져오자
+		BoardVO board = boardDao.selectByNo(10);
+		//boardVO를 호출하자
+		System.out.println(board);
+	}
 
+	private void deleteById() {
+		boardDao.deleteById(10);
+
+	}
+	
 	public void execute() {
 		// 메소드 생성
 		// 인서트 보드 하기
 		//addBoard();
 		
-		searchAllBoard();
+		//searchAllBoard();
 
+		//보드를 검색하자
+		selectByNo();
+		 
+		 //보드를 삭제하자
+		//deleteById();
+		
 	}
 
 }

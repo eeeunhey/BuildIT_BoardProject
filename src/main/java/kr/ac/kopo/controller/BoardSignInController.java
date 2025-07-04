@@ -8,7 +8,7 @@ public class BoardSignInController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return "/board/signIn.jsp";
+		return "/signIn/signIn.jsp";
 	}
 	
 	

@@ -1,71 +1,143 @@
 @charset "UTF-8";
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-    padding: 30px;
+/* 기본 설정 */
+
+/* 전역 설정 */
+* {
+  box-sizing: border-box;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px #ccc;
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
 }
 
-label {
-    display: block;
-    margin-top: 20px;
+/* 폼 */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
-.radio-group {
-    margin-top: 10px;
+/* 안내 문구 */
+.info-text {
+  font-size: 12px;
+  color: #777;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
-.radio-group input {
-    margin-right: 5px;
+/* 가입 버튼 */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #2da5f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.verify-btn {
-    width: 28%;
-    float: right;
-    padding: 10px;
-    margin-top: 5px;
+.btn-primary:hover {
+  background-color: #1995e3;
 }
 
-.clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
+/* 구분선 */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #aaa;
+  font-size: 13px;
 }
 
-.btn {
-    margin-top: 30px;
-    background-color: #FFD600;
-    color: black;
-    font-weight: bold;
-    padding: 15px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
 }
 
-.btn:hover {
-    background-color: #ffcc00;
+.divider::before {
+  margin-right: 1
+}
+
+/* 소셜 버튼 */
+.btn-social {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 구글 스타일 */
+.btn-social.google {
+  background: white url('/Board-WEB/resources/images/Google.png') no-repeat 12px center;
+  background-size: 20px;
+  padding-left: 40px;
+}
+
+/* 페이스북 스타일 */
+.btn-social.facebook {
+  background: white url('/Board-WEB/resources/images/KakaoTalk.png') no-repeat 12px center;
+  background-size: 20px;
+  padding-left: 40px;
+}
+
+/* 로그인 안내 */
+.login-text {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.login-text a {
+  color: #2da5f6;
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+/* 🔧 잘렸던 구분선 끝 수정 */
+.divider::before {
+  margin-right: 10px;
 }

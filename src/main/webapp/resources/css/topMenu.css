@@ -1,4 +1,4 @@
-@charset "UTF-8";
+
 @charset "UTF-8";
 
 /* 전체 바 */
@@ -110,3 +110,80 @@
 .right-group a:hover {
   color: #f57c00;
 }
+
+.custom-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  width: 350px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.arrow {
+  margin-left: 6px;
+  font-size: 10px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 120px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.search-box {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.search-box input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.search-box button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 10px;
+  font-size: 16px;
+}
+
