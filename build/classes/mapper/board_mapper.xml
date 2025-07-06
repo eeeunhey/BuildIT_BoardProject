@@ -12,6 +12,20 @@
 		엄청난 장점이다 메소드를 하나 호출하는걸로 끝난다 쿼리에 필요한 기능을 xml로 정리해놓고 호출해서 개편하다 쿼리는 쿼리대로 따로 
 		작성하도 while 문으로 다시 가져와 -->
 	<!-- 리턴값이 있으면 resultType으로 가져온다 파라미터 타입을 생각하고 해당 자료형을 적어준다 -->
+
+	<select id="selectWhere" resultMap="boardMap" parameterType="boardVO">
+		<!-- where절로 특정 조건 검색하기 타이틀명과 작성자 검색해보기 -->
+		select post_id , title, writer_id as writerId,
+		content, location, pay,
+		work_time as workTime,
+		to_char(reg_date, 'yyyy-mm-dd') as regDate,
+		to_char(deadline, 'yyyy-mm-dd') as deadline
+		from tbl_project_post
+		where
+		title = #{title} and writer_id = #{writerId}
+
+	</select>
+
 	<select id="selectByNo" resultType="boardVO" parameterType="int">
 		select post_id , title, writer_id as writerId,
 		content, location, pay,
@@ -30,7 +44,12 @@
 		content, location, pay,
 		work_time as workTime,
 		to_char(reg_date, 'yyyy-mm-dd') reg_date,
+<<<<<<< HEAD
 		to_char(deadline, 'yyyy-mm-dd') as deadline
+=======
+		to_char(deadline, 'yyyy-mm-dd') as deadline,
+		image
+>>>>>>> d560f20a6a385c7c6dd6056c4e4d0dc377271aea
 		from tbl_project_post
 		where
 		post_id = #{post_id}
@@ -39,7 +58,8 @@
 
 
 	<delete id="deleteById" parameterType="int">
-		delete from tbl_job_post
+		delete from
+		tbl_project_post
 		where
 		post_id = #{post_id}
 	</delete>
@@ -49,29 +69,42 @@
 		writer_id as writerId, content, location, pay,
 		work_time as workTime,
 		to_char(reg_date, 'yyyy-mm-dd') as regDate, to_char(deadline,
+<<<<<<< HEAD
 		'yyyy-mm-dd') as deadline
 		from tbl_project_post
 		order by post_id desc
+=======
+		'yyyy-mm-dd') as deadline, image
+		from tbl_project_post
+		order by post_id
+		desc
+>>>>>>> d560f20a6a385c7c6dd6056c4e4d0dc377271aea
 	</select>
 
+
 	<insert id="insert" parameterType="boardVO">
+<<<<<<< HEAD
 		insert into tbl_project_post (
+=======
+		INSERT INTO tbl_project_post (
+>>>>>>> d560f20a6a385c7c6dd6056c4e4d0dc377271aea
 		post_id, title, writer_id, content, location, pay,
 		work_time, reg_date,
-		deadline
-		) values (
-		seq_job_post.NEXTVAL,
+		deadline, image
+		) VALUES (
+		seq_project_post.NEXTVAL,
 		#{title},
-		#{writerId},
-		#{content},
-		#{location},
-		#{pay},
-		#{workTime},
-		TO_DATE(#{regDate},
-		'YYYY-MM-DD'),
-		TO_DATE(#{deadline}, 'YYYY-MM-DD')
+		#{writerId}, #{content}, #{location}, #{pay},
+		#{workTime}, SYSDATE,
+		TO_DATE(#{deadline}, 'YYYY-MM-DD'), #{image, jdbcType=BLOB}
 		)
 	</insert>
+
+	<insert id="insertPostTag" parameterType="map">
+		INSERT INTO tbl_post_tag (post_id, tag_id)
+		VALUES (#{postId}, #{tagId})
+	</insert>
+
 
 	<!-- resultMap type: 이 멤버변수와 매핑할거여 어떤 타입을 매핑할지에 대해 적자 result column = reg_date(컬럴명) 
 		property="getter/setter" -->

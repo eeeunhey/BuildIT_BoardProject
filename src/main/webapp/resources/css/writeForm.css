@@ -1,100 +1,156 @@
+
 @charset "UTF-8";
 
-/* 공통 폰트 및 색상 */
 body {
   font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #ffffff;
   margin: 0;
+  padding: 0;
 }
 
-/* 컨텐츠 중앙 정렬 및 여백 */
-#content {
+.form-container {
   max-width: 900px;
-  margin: 50px auto;
-  background: #fff;
+  margin: 40px auto;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
 }
 
-/* 테이블 스타일 */
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-spacing: 0;
+  border-collapse: separate;
 }
 
 th {
   text-align: left;
-  padding: 12px 0;
-  width: 25%;
-  font-weight: 600;
+  padding: 14px 12px;
+  background-color: #f3f4f6;
+  font-weight: 500;
+  color: #374151;
   vertical-align: top;
+  width: 25%;
+  border-radius: 8px;
 }
 
 td {
-  padding: 10px 0;
+  padding: 14px 12px;
 }
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
+input[type="file"],
 textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   box-sizing: border-box;
-  transition: border 0.3s;
+  transition: border-color 0.2s;
+  background-color: #fff;
 }
 
 input:focus,
 textarea:focus {
+  border-color: #2563eb;
   outline: none;
-  border-color: #4a90e2;
-  background-color: #f5faff;
 }
 
 textarea {
   resize: vertical;
+  min-height: 120px;
 }
 
-/* 버튼 스타일 */
 button[type="submit"] {
-  margin-top: 30px;
-  background-color: #3b55e6;
-  color: white;
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  background-color: #2563eb;
+  color: #ffffff;
   border: none;
-  padding: 14px 24px;
+  border-radius: 10px;
   font-size: 16px;
-  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
-  float: right;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #2e47c5;
+  background-color: #1e40af;
 }
 
-/* 제목, 구분선 등 */
-h2 {
-  font-size: 24px;
+.tag-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-checkboxes label {
+  background-color: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid #e5e7eb;
+  display: inline-block;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.tag-checkboxes label:hover {
+  background-color: #e0e7ff;
+}
+
+.tag-checkboxes input[type="checkbox"] {
+  display: none;
+}
+
+.tag-checkboxes input[type="checkbox"]:checked + label {
+  background-color: #2563eb;
+  color: white;
   font-weight: bold;
-  margin-bottom: 30px;
-  color: #333;
 }
 
-hr {
-  border: none;
-  height: 1px;
-  background-color: #ddd;
-  margin: 30px 0;
+
+.form-group {
+  margin-bottom: 28px; /* 여백을 넉넉하게 */
 }
 
-/* 작성자 텍스트 */
-td c\\:out {
-  font-size: 15px;
-  color: #666;
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #374151;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+textarea {
+  margin-top: 4px; /* label과 input 사이 간격 */
+}
+
+.readonly-box {
+  padding: 10px 14px;
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #6b7280;
 }

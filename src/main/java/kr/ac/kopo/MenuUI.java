@@ -1,5 +1,8 @@
 package kr.ac.kopo;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.nio.file.Files;
 import java.util.List;
 
 import kr.ac.kopo.board.batisdao.BoardDAO;
@@ -18,15 +21,17 @@ public class MenuUI {
 	private void addBoard() {
 		
 		BoardVO board = new BoardVO(    
-				0,
-			    "백엔드 API 문서화 작업",
-			    "backend02",
-			    "기존 API 스펙 문서 작성 및 정리 작업",
-			    "서울 강남구",
-			    21000,
-			    "13:00~17:00",
-			    "2025-06-28",
-			    "2025-07-08");
+					0,                                      // post_id
+				    "왕기초 웹 개발 프로젝트 모집",               // title
+				    "user123",                              // writerId
+				    "React 기반 웹 서비스 개발자 모집 중입니다.", // content
+				    "서울 강남구",                          // location
+				    300000,                                 // pay
+				    "09:00~18:00",                          // workTime
+				    "2025-07-05",                           // regDate
+				    "2025-07-31",                           // deadline
+				    null                            // image
+			    );
 		
 		boardDao.insert(board);
 	}
@@ -42,7 +47,7 @@ public class MenuUI {
 	
 	private void selectByNo() {
 		// 게시글 번호를 가져오자
-		BoardVO board = boardDao.selectByNo(10);
+		BoardVO board = boardDao.selectByNo(12);
 		//boardVO를 호출하자
 		System.out.println(board);
 	}
@@ -52,18 +57,42 @@ public class MenuUI {
 
 	}
 	
+	private void selectTag() {
+		
+	}
+	
+	private void selectBoardWhere() {
+		//제목이 왕기초 웹 개발 프로젝트 모집  작성자 : user123 을 찾아보장
+		BoardVO board = new BoardVO();
+		board.setTitle("왕기초 웹 개발 프로젝트 모집");
+		board.setWriterId("user123");
+		
+		List<BoardVO> list = boardDao.selectByWhere(board);
+		for(BoardVO vo : list) {
+			System.out.println(vo);
+		}
+		
+		
+	}
+	
+	
+	
+	
 	public void execute() {
 		// 메소드 생성
 		// 인서트 보드 하기
 		//addBoard();
 		
-		//searchAllBoard();
+		//selectAllBoard();
 
 		//보드를 검색하자
-		selectByNo();
+		//selectByNo();
 		 
 		 //보드를 삭제하자
 		//deleteById();
+		//서치올보드 
+		//searchBoard();
+		selectBoardWhere();
 		
 	}
 

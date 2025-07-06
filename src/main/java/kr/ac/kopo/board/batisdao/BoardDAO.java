@@ -21,6 +21,8 @@ public class BoardDAO {
 		session.insert("board.batisdao.BoardDAO.insert",board);
 		session.commit();
 		System.out.println("삽입완료");
+		int result = session.insert("board.batisdao.BoardDAO.insert", board);
+		System.out.println("삽입된 행 수: " + result);
 	}
 	
 	// 보드 전체 내용을 출력한다
@@ -48,5 +50,12 @@ public class BoardDAO {
 		session.commit();
 		System.out.println("삭제 완료");
 	
+	}
+	
+	public List<BoardVO> selectByWhere(BoardVO board) {
+		//레코드의 갯수가 한개이상이상에서 n개 이기 때문에 리스트로 받아온다
+		return session.selectList("board.batisdao.BoardDAO.selectWhere", board);
+		 
+		
 	}
 }
