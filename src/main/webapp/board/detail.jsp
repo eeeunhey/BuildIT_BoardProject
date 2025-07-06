@@ -19,7 +19,7 @@ request.setAttribute("board", board);
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세 보기</title>
-<link rel="stylesheet" href="/Board-WEB/resources/css/register.css">
+<link rel="stylesheet" href="/Board-WEB/resources/css/detail.css">
 <style>
 #content>* {
 	width: 80%;

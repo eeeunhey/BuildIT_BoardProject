@@ -17,114 +17,131 @@ import kr.ac.kopo.util.ConnectionFactory;
 
 public class BoardDAOImpl implements BoardDAO {
 
-
 	@Override
 	public List<BoardVO> selectBoardAll() {
-	    List<BoardVO> boardList = new ArrayList<>();
+		List<BoardVO> boardList = new ArrayList<>();
 
-	    StringBuilder sql = new StringBuilder();
-	    sql.append("SELECT post_id, title, writer_id, content, location, pay, work_time, ");
-	    sql.append("       TO_CHAR(reg_date, 'YYYY-MM-DD') reg_date, ");
-	    sql.append("       TO_CHAR(deadline, 'YYYY-MM-DD') deadline ");
-	    sql.append("  FROM tbl_job_post ");
-	    sql.append(" ORDER BY post_id DESC");
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT post_id, title, writer_id, content, location, pay, work_time, ");
+		sql.append("       TO_CHAR(reg_date, 'YYYY-MM-DD') reg_date, ");
+		sql.append("       TO_CHAR(deadline, 'YYYY-MM-DD') deadline, ");
+		sql.append("       image ");
+		sql.append("  FROM tbl_project_post ");
+		sql.append(" ORDER BY post_id DESC");
 
-	    try (
-	        Connection conn = new ConnectionFactory().getConnection();
-	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-	    ) {
-	        ResultSet rs = pstmt.executeQuery();
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			ResultSet rs = pstmt.executeQuery();
 
-	        while (rs.next()) {
-	            int postId = rs.getInt("post_id");
-	            String title = rs.getString("title");
-	            String writerId = rs.getString("writer_id");
-	            String content = rs.getString("content");
-	            String location = rs.getString("location");
-	            int pay = rs.getInt("pay");
-	            String workTime = rs.getString("work_time");
-	            String regDate = rs.getString("reg_date");
-	            String deadline = rs.getString("deadline");
+			while (rs.next()) {
+				int postId = rs.getInt("post_id");
+				String title = rs.getString("title");
+				String writerId = rs.getString("writer_id");
+				String content = rs.getString("content");
+				String location = rs.getString("location");
+				int pay = rs.getInt("pay");
+				String workTime = rs.getString("work_time");
+				String regDate = rs.getString("reg_date");
+				String deadline = rs.getString("deadline");
+				byte[] image = rs.getBytes("image"); // 🔹 이미지 byte 배열로 읽기
 
-	            BoardVO job = new BoardVO(postId, title, writerId, content, location, pay, workTime, regDate, deadline);
-	            boardList.add(job);
-	          
-	        }
+				// BoardVO 생성 및 값 설정
+				BoardVO job = new BoardVO(postId, title, writerId, content, location, pay, workTime, regDate, deadline,
+						image);
+				job.setImage(image); // 🔹 이미지 저장
 
-	    } catch (Exception e) {
+				boardList.add(job);
+			}
 
-	        e.printStackTrace();
-	    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	    return boardList;
+		return boardList;
 	}
 
 	@Override
 	public void insertBoard(BoardVO newBoard) {
-	    StringBuilder sql = new StringBuilder();
-	    sql.append("INSERT INTO tbl_job_post( ");
-	    sql.append("post_id, title, writer_id, content, location, pay, work_time, reg_date, deadline) ");
-	    sql.append("VALUES( seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'))");
+		StringBuilder sql = new StringBuilder();
+		sql.append("INSERT INTO tbl_project_post (");
+		sql.append("post_id, title, writer_id, content, location, pay, ");
+		sql.append("work_time, reg_date, deadline, image) ");
+		sql.append("VALUES (seq_project_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'), ?)");
 
-	    try (
-	        Connection conn = new ConnectionFactory().getConnection();
-	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-	    ) {
-	        pstmt.setString(1, newBoard.getTitle());
-	        pstmt.setString(2, newBoard.getWriterId());
-	        pstmt.setString(3, newBoard.getContent());
-	        pstmt.setString(4, newBoard.getLocation());
-	        pstmt.setInt(5, newBoard.getPay());
-	        pstmt.setString(6, newBoard.getWorkTime());
-	        pstmt.setString(7, newBoard.getDeadline());
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			System.out.println("📌 Title: " + newBoard.getTitle());
+			System.out.println("📌 Writer: " + newBoard.getWriterId());
+			System.out.println("📌 Pay: " + newBoard.getPay());
+			System.out.println("📌 Title: " + newBoard.getLocation());
+			System.out.println("📌 Writer: " + newBoard.getRegDate());
+			System.out.println("📌 Pay: " + newBoard.getWorkTime());
 
-	        pstmt.executeUpdate();
-	        System.out.println("게시글 등록 시도: " + newBoard);
-	    } catch (Exception e) {
-	        System.out.println("게시글 등록 중 오류 발생");
-	        e.printStackTrace();
-	    }
+			pstmt.setString(1, newBoard.getTitle());
+			pstmt.setString(2, newBoard.getWriterId());
+			pstmt.setString(3, newBoard.getContent());
+			pstmt.setString(4, newBoard.getLocation());
+			pstmt.setInt(5, newBoard.getPay());
+			pstmt.setString(6, newBoard.getWorkTime());
+			pstmt.setString(7, newBoard.getDeadline());
+
+			if (newBoard.getImage() != null) {
+				pstmt.setBytes(8, newBoard.getImage());
+			} else {
+				pstmt.setNull(8, java.sql.Types.BLOB);
+			}
+
+			int result = pstmt.executeUpdate();
+			System.out.println("✅ 삽입된 행 수: " + result);
+			conn.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
-
 
 	@Override
 	public BoardVO selectBoardByNo(int postId) {
-	    StringBuilder sql = new StringBuilder();
-	    sql.append("SELECT post_id, title, writer_id, content, ");
-	    sql.append("       location, pay, work_time, ");
-	    sql.append("       TO_CHAR(reg_date, 'yyyy-mm-dd') AS reg_date, ");
-	    sql.append("       TO_CHAR(deadline, 'yyyy-mm-dd') AS deadline ");
-	    sql.append("  FROM tbl_job_post ");
-	    sql.append(" WHERE post_id = ? ");
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT post_id, title, writer_id, content, ");
+		sql.append("       location, pay, work_time, ");
+		sql.append("       TO_CHAR(reg_date, 'yyyy-mm-dd') AS reg_date, ");
+		sql.append("       TO_CHAR(deadline, 'yyyy-mm-dd') AS deadline, ");
+		sql.append("       image ");
+		sql.append("  FROM tbl_project_post ");
+		sql.append(" WHERE post_id = ? ");
 
-	    try (
-	        Connection conn = new ConnectionFactory().getConnection();
-	        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-	    ) {
-	        pstmt.setInt(1, postId);
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setInt(1, postId);
 
-	        ResultSet rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 
-	        if (rs.next()) {
-	            int post = rs.getInt("post_id");
-	            String title = rs.getString("title");
-	            String writerId = rs.getString("writer_id");
-	            String content = rs.getString("content");
-	            String location = rs.getString("location");
-	            int pay = rs.getInt("pay");
-	            String workTime = rs.getString("work_time");
-	            String regDate = rs.getString("reg_date");
-	            String deadline = rs.getString("deadline");
+			if (rs.next()) {
+				int post = rs.getInt("post_id");
+				String title = rs.getString("title");
+				String writerId = rs.getString("writer_id");
+				String content = rs.getString("content");
+				String location = rs.getString("location");
+				int pay = rs.getInt("pay");
+				String workTime = rs.getString("work_time");
+				String regDate = rs.getString("reg_date");
+				String deadline = rs.getString("deadline");
+				byte[] image = rs.getBytes("image"); // 🔹 이미지 가져오기
 
-	            BoardVO job = new BoardVO(post, title, writerId, content, location, pay, workTime, regDate, deadline);
-	            return job;
-	        }
+				BoardVO job = new BoardVO(post, title, writerId, content, location, pay, workTime, regDate, deadline,
+						image);
+				job.setImage(image); // 🔹 세팅
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+				return job;
+			}
 
-	    return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 	@Override
@@ -134,13 +151,13 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void deleteBoardByNo(int boardNo) {
-	    String sql = "DELETE FROM tbl_job_post WHERE post_id = ?";
-	    try (Connection conn = new ConnectionFactory().getConnection();
-	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-	        pstmt.setInt(1, boardNo);
-	        pstmt.executeUpdate();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+		String sql = "DELETE FROM tbl_project_post WHERE post_id = ?";
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setInt(1, boardNo);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

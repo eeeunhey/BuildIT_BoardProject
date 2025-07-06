@@ -1,48 +1,72 @@
 package kr.ac.kopo.controller;
 
+import java.io.InputStream;
+import java.time.LocalDate;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import kr.ac.kopo.board.batisdao.BoardDAO;
+import jakarta.servlet.http.Part;
 import kr.ac.kopo.board.dao.BoardDAOImpl;
 import kr.ac.kopo.board.vo.BoardVO;
 import kr.ac.kopo.framework.Controller;
 
 public class BoardWriteController implements Controller {
-	
 
-	private BoardDAOImpl boardDao;
-	
-	public BoardWriteController() {
-		boardDao = new BoardDAOImpl();
-	}
+    private BoardDAOImpl boardDao;
 
-	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public BoardWriteController() {
+        boardDao = new BoardDAOImpl();
+    }
 
-		// 1. 폼에서 보낸 모든 파라미터 받기
-	    String title = request.getParameter("title");
-	    String writerId = request.getParameter("writer_id"); // name="writer_id"로 전송됨
-	    String content = request.getParameter("content");
-	    String location = request.getParameter("location");
-	    int pay = Integer.parseInt(request.getParameter("pay"));
-	    String workTime = request.getParameter("work_time");
-	    String deadline = request.getParameter("deadline"); // "YYYY-MM-DD" 문자열
+    @Override
+    public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	    // 2. BoardVO에 값 설정 (생성자 또는 setter)
-	    BoardVO board = new BoardVO();
-	    board.setTitle(title);
-	    board.setWriterId(writerId);
-	    board.setContent(content);
-	    board.setLocation(location);
-	    board.setPay(pay);
-	    board.setWorkTime(workTime);
-	    board.setDeadline(deadline);
+        // 1. 파라미터 수집 및 유효성 검사
+        String title = request.getParameter("title");
+        String writerId = request.getParameter("writer_id");
+        String content = request.getParameter("content");
+        String payStr = request.getParameter("pay");
+        String location = request.getParameter("location");
+        String workTime = request.getParameter("work_time");
+        String deadline = request.getParameter("deadline");
+        String regDate = LocalDate.now().toString();
 
-	    // 3. DB 저장
-	    boardDao.insertBoard(board);
 
-	    // 4. 공고 목록 페이지로 리다이렉트
-	    return "redirect:/board/list.do";
-	}
+        int pay = 0;
+        try {
+            pay = Integer.parseInt(payStr.trim());
+        } catch (Exception e) {
+            System.out.println("pay 파싱 실패: " + e.getMessage());
+            pay = 0; // 예외 회피용 기본값 (필요 시 삭제)
+        }
+
+        // 2. 이미지 파일 처리
+        Part filePart = request.getPart("image");
+        byte[] imageBytes = null;
+        if (filePart != null && filePart.getSize() > 0) {
+            try (InputStream inputStream = filePart.getInputStream()) {
+                imageBytes = inputStream.readAllBytes();
+            }
+        }
+
+        // 3. VO 객체 생성
+        BoardVO board = new BoardVO(
+            title,
+            writerId,
+            content,
+            location,
+            pay,
+            workTime,
+            regDate,
+            deadline,
+            imageBytes
+        );
+
+        // 4. DB 저장
+        boardDao.insertBoard(board);
+
+        // 5. 목록 페이지로 이동
+        return "redirect:/board/list.do";
+    }
 
 }
