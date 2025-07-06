@@ -18,7 +18,7 @@
 		work_time as workTime,
 		to_char(reg_date, 'yyyy-mm-dd') as regDate,
 		to_char(deadline, 'yyyy-mm-dd') as deadline
-		from tbl_job_post
+		from tbl_project_post
 		where
 		post_id = #{post_id}
 		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->
@@ -31,7 +31,7 @@
 		work_time as workTime,
 		to_char(reg_date, 'yyyy-mm-dd') reg_date,
 		to_char(deadline, 'yyyy-mm-dd') as deadline
-		from tbl_job_post
+		from tbl_project_post
 		where
 		post_id = #{post_id}
 		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->
@@ -50,12 +50,12 @@
 		work_time as workTime,
 		to_char(reg_date, 'yyyy-mm-dd') as regDate, to_char(deadline,
 		'yyyy-mm-dd') as deadline
-		from tbl_job_post
+		from tbl_project_post
 		order by post_id desc
 	</select>
 
 	<insert id="insert" parameterType="boardVO">
-		insert into tbl_job_post (
+		insert into tbl_project_post (
 		post_id, title, writer_id, content, location, pay,
 		work_time, reg_date,
 		deadline

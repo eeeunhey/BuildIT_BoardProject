@@ -26,7 +26,7 @@ public class BoardDAOImpl implements BoardDAO {
 	    sql.append("SELECT post_id, title, writer_id, content, location, pay, work_time, ");
 	    sql.append("       TO_CHAR(reg_date, 'YYYY-MM-DD') reg_date, ");
 	    sql.append("       TO_CHAR(deadline, 'YYYY-MM-DD') deadline ");
-	    sql.append("  FROM tbl_job_post ");
+	    sql.append("  FROM tbl_project_post ");
 	    sql.append(" ORDER BY post_id DESC");
 
 	    try (
@@ -62,9 +62,9 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void insertBoard(BoardVO newBoard) {
 	    StringBuilder sql = new StringBuilder();
-	    sql.append("INSERT INTO tbl_job_post( ");
+	    sql.append("INSERT INTO tbl_project_post( ");
 	    sql.append("post_id, title, writer_id, content, location, pay, work_time, reg_date, deadline) ");
-	    sql.append("VALUES( seq_job_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'))");
+	    sql.append("VALUES( seq_project_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'))");
 
 	    try (
 	        Connection conn = new ConnectionFactory().getConnection();
@@ -94,7 +94,7 @@ public class BoardDAOImpl implements BoardDAO {
 	    sql.append("       location, pay, work_time, ");
 	    sql.append("       TO_CHAR(reg_date, 'yyyy-mm-dd') AS reg_date, ");
 	    sql.append("       TO_CHAR(deadline, 'yyyy-mm-dd') AS deadline ");
-	    sql.append("  FROM tbl_job_post ");
+	    sql.append("  FROM tbl_project_post ");
 	    sql.append(" WHERE post_id = ? ");
 
 	    try (
@@ -134,7 +134,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void deleteBoardByNo(int boardNo) {
-	    String sql = "DELETE FROM tbl_job_post WHERE post_id = ?";
+	    String sql = "DELETE FROM tbl_project_post WHERE post_id = ?";
 	    try (Connection conn = new ConnectionFactory().getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        pstmt.setInt(1, boardNo);
