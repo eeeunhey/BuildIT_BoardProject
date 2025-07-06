@@ -1,11 +1,11 @@
 
 # 🚀 Buildit
 
-**배운 기술을 실제로 적용해보고 싶은 개발자를 위한 실전형 커뮤니티**
+배운 기술을 실제로 적용해보고 싶은 개발자를 위한 실전형 커뮤니티
 
 국비지원 교육, 부트캠프, 독학 등으로 학습한 기술을  실제 팀 프로젝트에 참여하며  
-기획부터 개발, 협업, 배포까지 **현업처럼 경험**할 수 있는 실전형 개발 커뮤니티입니다.  
-단순한 학습을 넘어, **함께 만드는 프로젝트를 통해 나만의 기술 스택과 실무 감각을 키워갑니다.
+기획부터 개발, 협업, 배포까지 현업처럼 경험할 수 있는 실전형 개발 커뮤니티입니다.  
+단순한 학습을 넘어, 함께 만드는 프로젝트를 통해 나만의 기술 스택과 실무 감각을 키워갑니다.
 ---
 
 ## 🔑 핵심 키워드
@@ -41,9 +41,21 @@ Buildit은 강의, 부트캠프, 독학 등으로 습득한 지식을
 - `board_mapper.xml`에 `selectAll` 쿼리 추가
 
 ### 2025-07-06
-- `writerForm.jsp` 입력 시 db로 값이 들어감
-- `multipart/form-data` 요청을 정상적으로 처리하기 위해
-- `web.xml` 에 `multipart-config`를 추가
+
+<sub>
+- `writerForm.jsp`에서 입력한 값이 DB에 저장됨  
+- `multipart/form-data` 처리를 위해 `web.xml`에 `multipart-config` 추가  
+</sub>
+<sub>📚 MyBatis 적용 준비</sub>
+<sub>
+1. `board_mapper.xml`  
+   - insert, select, selectWhere, delete 쿼리 작성  
+2. `BoardDAO.java`  
+   - `insert()`, `selectAll()`, `selectByNo()`, `deleteById()`, `selectByWhere()` 구현  
+3. `MenuUI.java`  
+   - `addBoard()`, `selectAllBoard()`, `selectByNo()`, `deleteById()`, `selectBoardWhere()`, `execute()` 구현  
+</sub>
+
 
 ---
 
