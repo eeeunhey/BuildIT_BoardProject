@@ -40,16 +40,11 @@
 
 	<select id="selectByNo2" resultMap="boardMap"
 		parameterType="int">
-		select post_id , title, writer_id writer_id,
+		select post_id , title, writer_id as writerId,
 		content, location, pay,
 		work_time as workTime,
-		to_char(reg_date, 'yyyy-mm-dd') reg_date,
-<<<<<<< HEAD
+		to_char(reg_date, 'yyyy-mm-dd') as regDate,
 		to_char(deadline, 'yyyy-mm-dd') as deadline
-=======
-		to_char(deadline, 'yyyy-mm-dd') as deadline,
-		image
->>>>>>> d560f20a6a385c7c6dd6056c4e4d0dc377271aea
 		from tbl_project_post
 		where
 		post_id = #{post_id}
@@ -69,25 +64,16 @@
 		writer_id as writerId, content, location, pay,
 		work_time as workTime,
 		to_char(reg_date, 'yyyy-mm-dd') as regDate, to_char(deadline,
-<<<<<<< HEAD
-		'yyyy-mm-dd') as deadline
-		from tbl_project_post
-		order by post_id desc
-=======
 		'yyyy-mm-dd') as deadline, image
 		from tbl_project_post
 		order by post_id
 		desc
->>>>>>> d560f20a6a385c7c6dd6056c4e4d0dc377271aea
 	</select>
 
 
 	<insert id="insert" parameterType="boardVO">
-<<<<<<< HEAD
-		insert into tbl_project_post (
-=======
 		INSERT INTO tbl_project_post (
->>>>>>> d560f20a6a385c7c6dd6056c4e4d0dc377271aea
+
 		post_id, title, writer_id, content, location, pay,
 		work_time, reg_date,
 		deadline, image

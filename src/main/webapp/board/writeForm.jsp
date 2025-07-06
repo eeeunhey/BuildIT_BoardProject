@@ -1,96 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>   
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>π 프로젝트 등록하기</title>
+
+  <!-- 외부 CSS -->
+  <link rel="stylesheet" href="/Board-WEB/resources/css/layout.css">
+  <link rel="stylesheet" href="/Board-WEB/resources/css/my_css.css">
   <link rel="stylesheet" href="/Board-WEB/resources/css/writeForm.css">
-</head>
-<body>
-  <header>
-    <jsp:include page="/include/topMenu.jsp" />
-  </header>
 
-  <section>
-    <div class="form-container">
-      <h2>프로젝트 등록</h2>
-
-      <form name="wForm" action="/Board-WEB/board/write.do" method="post"
-            enctype="multipart/form-data" onsubmit="return checkForm()">
-
-        <input type="hidden" name="writer_id" value="${userVO.id}">
-
-        <!-- 제목 -->
-        <div class="form-group">
-          <label for="title">제목</label>
-          <input type="text" id="title" name="title" required>
-        </div>
-
-        <!-- 작성자 -->
-        <div class="form-group">
-          <label>작성자</label>
-          <div class="readonly-box">${userVO.id}</div>
-        </div>
-
-        <!-- 근무지역 -->
-        <div class="form-group">
-          <label for="location">근무지역</label>
-          <input type="text" id="location" name="location" required>
-        </div>11111121	           aa22222aㅇㄴㅇㄴ
-
-        <!-- 급여 -->
-        <div class="form-group">
-          <label for="pay">시급/급여</label>
-          <input type="number" id="pay" name="pay" required>
-        </div>
-
-        <!-- 근무시간 -->
-        <div class="form-group">
-          <label for="work_time">근무시간</label>
-          <input type="text" id="work_time" name="work_time" placeholder="예: 오전 9시 ~ 오후 6시" required>
-        </div>
-
-        <!-- 마감일 -->
-        <div class="form-group">
-          <label for="deadline">마감일</label>
-          <input type="date" id="deadline" name="deadline" required>
-        </div>
-
-        <!-- 내용 -->
-        <div class="form-group">
-          <label for="content">내용</label>
-          <textarea id="content" name="content" rows="8" required></textarea>
-        </div>
-
-        <!-- 이미지 업로드 -->
-        <div class="form-group">
-          <label for="image">이미지 업로드</label>
-          <input type="file" id="image" name="image" accept="image/*">
-        </div>
-
-        <!-- 태그 선택 -->
-        <div class="form-group">
-          <label>태그 선택</label>
-          <div class="tag-checkboxes">
-            <label><input type="checkbox" name="tagIds" value="1"> 백엔드</label>
-            <label><input type="checkbox" name="tagIds" value="2"> 프론트엔드</label>
-            <label><input type="checkbox" name="tagIds" value="3"> AI</label>
-            <label><input type="checkbox" name="tagIds" value="4"> DevOps</label>
-            <label><input type="checkbox" name="tagIds" value="5"> Python</label>
-          </div>
-        </div>
-
-        <button type="submit">등록</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <jsp:include page="/include/footer.jsp" />
-  </footer>
-
+  <!-- JS 유효성 검사 -->
   <script>
     function checkForm() {
       const f = document.wForm;
@@ -103,5 +25,82 @@
       return true;
     }
   </script>
+</head>
+<body>
+
+  <!-- 상단 메뉴 포함 -->
+  <header>
+    <jsp:include page="/include/topMenu.jsp" />
+  </header>
+
+  <!-- 본문 -->
+  <section>
+    <div align="center" id="content">
+      <hr>
+      <h2>프로젝트 등록</h2>
+      <hr>
+      <br>
+
+      <form name="wForm" action="/Board-WEB/board/write.do" method="post"
+            enctype="multipart/form-data" onsubmit="return checkForm()">
+
+        <input type="hidden" name="writer_id" value="${userVO.id}">
+
+        <table style="width: 80%;">
+          <tr>
+            <th width="25%">제목</th>
+            <td><input type="text" name="title" required></td>
+          </tr>
+          <tr>
+            <th>작성자</th>
+            <td><div class="readonly-box">${userVO.id}</div></td>
+          </tr>
+          <tr>
+            <th>내용</th>
+            <td><textarea id="content" name="content" rows="8" cols="60" required></textarea></td>
+          </tr>
+          <tr>
+            <th>근무지역</th>
+            <td><input type="text" id="location" name="location" required></td>
+          </tr>
+          <tr>
+            <th>시급/급여</th>
+            <td><input type="number" id="pay" name="pay" required></td>
+          </tr>
+          <tr>
+            <th>근무시간</th>
+            <td><input type="text" id="work_time" name="work_time" placeholder="예: 오전 9시 ~ 오후 6시" required></td>
+          </tr>
+          <tr>
+            <th>마감일</th>
+            <td><input type="date" id="deadline" name="deadline" required></td>
+          </tr>
+          <tr>
+            <th>이미지 업로드</th>
+            <td><input type="file" id="image" name="image" accept="image/*"></td>
+          </tr>
+          <tr>
+            <th>태그 선택</th>
+            <td>
+              <div class="tag-checkboxes">
+                <label><input type="checkbox" name="tagIds" value="1"> 백엔드</label>
+                <label><input type="checkbox" name="tagIds" value="2"> 프론트엔드</label>
+                <label><input type="checkbox" name="tagIds" value="3"> AI</label>
+                <label><input type="checkbox" name="tagIds" value="4"> DevOps</label>
+                <label><input type="checkbox" name="tagIds" value="5"> Python</label>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <button type="submit">등록</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 하단 푸터 포함 -->
+  <footer>
+    <jsp:include page="/include/footer.jsp" />
+  </footer>
 </body>
 </html>

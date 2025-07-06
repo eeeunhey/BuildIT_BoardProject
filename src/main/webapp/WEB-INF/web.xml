@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
-  <display-name>Board-WEB</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+	id="WebApp_ID" version="5.0">
+	<display-name>Board-WEB</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
 
 	<servlet>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<servlet-class>kr.ac.kopo.framework.DispatcherServlet</servlet-class>
-	</servlet>  
+		<multipart-config>
+			<location>C:/Users/User/git/JS_BoardProject/Board-WEB/src/main/webapp/resources/images</location>
+			<max-file-size>10485760</max-file-size>         <!-- 10MB -->
+			<max-request-size>52428800</max-request-size>   <!-- 50MB -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1MB -->
+		</multipart-config>
+	</servlet>
+
+
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>		
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-  
+
 </web-app>

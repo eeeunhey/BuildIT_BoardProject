@@ -14,10 +14,9 @@ public class BoardVO {
 	private String regDate;
 	private String deadline;
 	private byte[] image;
-	
 
 	public BoardVO() {
-		
+
 	}
 
 	// 전체 필드 생성자
@@ -37,6 +36,8 @@ public class BoardVO {
 	}
 
 	// postId를 제외한 생성자 (insert 시 사용)
+
+	// BoardVO.java 안에 아래 생성자 추가
 	public BoardVO(String title, String writerId, String content, String location, int pay, String workTime,
 			String regDate, String deadline, byte[] image) {
 		this.title = title;
