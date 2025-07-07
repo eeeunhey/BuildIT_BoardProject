@@ -7,15 +7,17 @@ public class MemberVO {
 	private String name;
 	private String type;
 	
+	//기본 생성자
 	public MemberVO() {
 	}
 
-	public MemberVO(String id, String password) {
+	// 타입만 포함하는 생성자
+	public MemberVO(String id, String password, String type ) {
 		super();
 		this.id = id;
 		this.password = password;
+		this.type = type;
 	}
-	
 	
 
 	public MemberVO(String id, String password, String name, String type) {
@@ -26,6 +28,7 @@ public class MemberVO {
 		this.type = type;
 	}
 
+	// Getter/Setter
 	public String getId() {
 		return id;
 	}
@@ -62,5 +65,5 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", type=" + type + "]";
 	}
-
 }
+

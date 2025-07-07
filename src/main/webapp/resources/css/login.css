@@ -120,3 +120,50 @@ body {
   font-size: 14px;
   margin-top: 20px;
 }
+/* 공통 폼 스타일 */
+label {
+  display: inline-block;
+  width: 120px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+select {
+  width: 200px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  appearance: none; /* 브라우저 기본 화살표 제거 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path fill="%23666" d="M0 0l5 6 5-6z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
+select:focus {
+  border-color: #3399ff;
+  outline: none;
+  box-shadow: 0 0 3px rgba(51, 153, 255, 0.5);
+}
+
+/* 줄 간격 정렬용 */
+br {
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
