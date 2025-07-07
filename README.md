@@ -66,9 +66,9 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 <sub>
 - `writerForm.jsp`에서 입력한 값이 DB에 저장됨  
 - `multipart/form-data` 처리를 위해 `web.xml`에 `multipart-config` 추가  
-</sub>
+
 <sub>📚 MyBatis 적용 준비</sub>  
-<sub>
+
 1. `board_mapper.xml`  
    - `insert`: 게시글 등록 쿼리  
    - `select`: 전체 게시글 조회 쿼리  
@@ -89,7 +89,7 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
    - `deleteById()`: 게시글 삭제 테스트  
    - `selectBoardWhere()`: 조건 검색 결과 출력  
    - `execute()`: 메소드 실행 흐름 제어  
-</sub>
+
 
 ---
 
@@ -99,7 +99,7 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 - `loginController.java' 클라이언트 / 파트너 선택 처리 추가
 - `login.css` 수정
 <sub>📚 MyBatis 적용 준비</sub>  
-<sub>
+
 1. `board_mapper.xml`  
    - `selectByNo`: 게시글 번호로 게시글 1건 조회  
    - `selectBoardWhere`: VO를 이용한 제목/작성자 조건 검색  
@@ -116,7 +116,7 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
    - `selectBoardWhere()`: 제목/작성자 조건으로 게시글 검색 (VO 사용)  
    - `selectBoardWhereMap()`: 키-값 조건으로 게시글 검색 (Map 사용)  
 
-</sub>
+
 
 > 함께 만들어가는 프로젝트에서 **실력과 자신감**을 길러보세요.  
 > **Build it, with Buildit.**
