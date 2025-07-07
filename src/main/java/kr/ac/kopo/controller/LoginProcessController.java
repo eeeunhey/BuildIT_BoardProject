@@ -21,12 +21,15 @@ public class LoginProcessController implements Controller {
 		// 파라미터 추출(id, password)
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String type = request.getParameter("type");
 
 		System.out.println("id : " + id + ", password : " + password);
 
 		// DB(t_member)에서 로그인여부 판단
-		MemberVO member = new MemberVO(id, password);
+		MemberVO member = new MemberVO(id, password, type);
 		MemberVO userVO = memberService.login(member);
+		
+		
 
 		// 판단여부에 따른 결과 응답(response)
 		String url = "";

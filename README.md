@@ -47,6 +47,12 @@ Buildit은 강의, 부트캠프, 독학 등으로 습득한 지식을
 
 ---
 
+### 2025-07-07
+- `loginForm.jsp` 클라이언트 / 파트너 선택 할 수 있도록 수정
+- `MemverVO.java` 수정 추가 
+- `loginController.java' 클라이언트 / 파트너 선택 처리 추가
+- `login.css` 수정
+
 함께 배우고, 함께 만들고, 함께 성장해요.  
 **Build it. _당신의 실력을 현실로._**
 
