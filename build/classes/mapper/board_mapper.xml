@@ -13,41 +13,60 @@
 		작성하도 while 문으로 다시 가져와 -->
 	<!-- 리턴값이 있으면 resultType으로 가져온다 파라미터 타입을 생각하고 해당 자료형을 적어준다 -->
 
-	<select id="selectWhere" resultMap="boardMap" parameterType="boardVO">
-		<!-- where절로 특정 조건 검색하기 타이틀명과 작성자 검색해보기 -->
-		select post_id , title, writer_id as writerId,
-		content, location, pay,
-		work_time as workTime,
-		to_char(reg_date, 'yyyy-mm-dd') as regDate,
-		to_char(deadline, 'yyyy-mm-dd') as deadline
+	<!-- 공통 쿼리를 작성해서 중복 코드 줄이기 -->
+	<sql id="selectBoard">
+		select postid, title, writerid,
+		content,
+		location, pay,
+		worktime ,
+		to_char(regdate, 'yyyy-mm-dd') as regdate,
+		to_char(deadline,
+		'yyyy-mm-dd') as deadline
 		from tbl_project_post
-		where
-		title = #{title} and writer_id = #{writerId}
+	</sql>
 
+	<select id="selectWhere" resultMap="boardMap"
+		parameterType="boardVO">
+		<!-- where절로 특정 조건 검색하기 타이틀명과 작성자 검색해보기 -->
+		<include refid="selectBoard" />
+		<where>
+			<if test="title != null">title = #{title}</if>
+
+			<if test="writerid != null">
+				writerid = #{writerid}
+			</if>
+		</where>
+
+		<!-- 동적 태그를 만들어보장 <where>태그로 묶어준다 -> and 조건에서 or 조건으로 적용 조건문처리 - -->
+	</select>
+	
+		<select id="selectByWhereMap" resultMap="boardMap"
+		parameterType="boardVO">
+		<!-- where절로 특정 조건 검색하기 타이틀명과 작성자 검색해보기 -->
+		<include refid="selectBoard" />
+		<where>
+			<if test="title != null">title = #{title}</if>
+
+			<if test="writerid != null">
+				writerid = #{writerid}
+			</if>
+		</where>
+
+		<!-- 동적 태그를 만들어보장 <where>태그로 묶어준다 -> and 조건에서 or 조건으로 적용 조건문처리 - -->
 	</select>
 
 	<select id="selectByNo" resultType="boardVO" parameterType="int">
-		select post_id , title, writer_id as writerId,
-		content, location, pay,
-		work_time as workTime,
-		to_char(reg_date, 'yyyy-mm-dd') as regDate,
-		to_char(deadline, 'yyyy-mm-dd') as deadline
-		from tbl_project_post
+		<include refid="selectBoard" />
 		where
-		post_id = #{post_id}
+		postid = #{postid}
 		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->
 	</select>
 
 	<select id="selectByNo2" resultMap="boardMap"
 		parameterType="int">
-		select post_id , title, writer_id as writerId,
-		content, location, pay,
-		work_time as workTime,
-		to_char(reg_date, 'yyyy-mm-dd') as regDate,
-		to_char(deadline, 'yyyy-mm-dd') as deadline
-		from tbl_project_post
+		<include refid="selectBoard" />
 		where
-		post_id = #{post_id}
+		postid = #{post_id}
 		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->
 	</select>
 
@@ -56,17 +75,13 @@
 		delete from
 		tbl_project_post
 		where
-		post_id = #{post_id}
+		postid = #{postid}
 	</delete>
 
 	<select id="selectAll" resultType="boardVO">
-		select post_id, title,
-		writer_id as writerId, content, location, pay,
-		work_time as workTime,
-		to_char(reg_date, 'yyyy-mm-dd') as regDate, to_char(deadline,
-		'yyyy-mm-dd') as deadline, image
+		<include refid="selectBoard" />
 		from tbl_project_post
-		order by post_id
+		order by postid
 		desc
 	</select>
 
@@ -74,28 +89,30 @@
 	<insert id="insert" parameterType="boardVO">
 		INSERT INTO tbl_project_post (
 
-		post_id, title, writer_id, content, location, pay,
-		work_time, reg_date,
+		postid, title, writerid, content, location, pay,
+		worktime, regdate,
 		deadline, image
 		) VALUES (
 		seq_project_post.NEXTVAL,
 		#{title},
-		#{writerId}, #{content}, #{location}, #{pay},
-		#{workTime}, SYSDATE,
+		#{writerid}, #{content}, #{location}, #{pay},
+		#{worktime}, SYSDATE,
 		TO_DATE(#{deadline}, 'YYYY-MM-DD'), #{image, jdbcType=BLOB}
 		)
 	</insert>
 
 	<insert id="insertPostTag" parameterType="map">
-		INSERT INTO tbl_post_tag (post_id, tag_id)
-		VALUES (#{postId}, #{tagId})
+		INSERT INTO
+		tbl_post_tag (postid, tagid)
+		VALUES (#{postid}, #{tagid})
 	</insert>
 
 
 	<!-- resultMap type: 이 멤버변수와 매핑할거여 어떤 타입을 매핑할지에 대해 적자 result column = reg_date(컬럴명) 
 		property="getter/setter" -->
 	<resultMap type="boardVO" id="boardMap">
-		<result column="reg_date" property="regDate" />
-		<result column="writer_id" property="writerId" />
+		<result column="regdate" property="regdate" />
+		<result column="writerid" property="writerid" />
 	</resultMap>
+
 </mapper>

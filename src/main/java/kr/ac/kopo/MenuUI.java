@@ -1,9 +1,8 @@
 package kr.ac.kopo;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.ac.kopo.board.batisdao.BoardDAO;
 import kr.ac.kopo.board.vo.BoardVO;
@@ -23,7 +22,7 @@ public class MenuUI {
 		BoardVO board = new BoardVO(    
 					0,                                      // post_id
 				    "왕기초 웹 개발 프로젝트 모집",               // title
-				    "user123",                              // writerId
+				    "user",                              // writerId
 				    "React 기반 웹 서비스 개발자 모집 중입니다.", // content
 				    "서울 강남구",                          // location
 				    300000,                                 // pay
@@ -62,17 +61,53 @@ public class MenuUI {
 	}
 	
 	private void selectBoardWhere() {
+		
 		//제목이 왕기초 웹 개발 프로젝트 모집  작성자 : user123 을 찾아보장
+		// 방법1 제목이 왕기초 웹 개발 프로젝트 모집 글쓴이 user123
+		// 		board.setTitle("왕기초 웹 개발 프로젝트 모집");
+		
+		// 방법 2 글쓴이 상관없이 제목만 검색할 경우
+		// board-mapper에서 where 태그안에 if 조건을 사용하여 제어한다
+		// writer 가 null 이 아닐 때
+		
+		// 방법 3 같은 글쓴이만 검색할 경우
+		// board-mapper에서 where 태그안에 if 조건을 사용하여 제어한다
+		// title가 null 이 아닐 때
+		
+		//방법 4 아무것도 입력값이 없을 경우는 모든 리스트가 출력된다
+		//나중에 태그를 이런식으로 호출하면 되겠다 나중에 tagVO를 만들어서 TagVO 객체를 새로 할당하고 mapper에서 쿼리작성 DAO 메소드 생성하고 실행
 		BoardVO board = new BoardVO();
-		board.setTitle("왕기초 웹 개발 프로젝트 모집");
-		board.setWriterId("user123");
+
+		//방법 2 제목이 왕기초 웹 개발 프로젝트 모집 게시물 조회하기
+		//board.setTitle("왕기초 웹 개발 프로젝트 모집");
+		//board.setWriterId("user123");
 		
 		List<BoardVO> list = boardDao.selectByWhere(board);
 		for(BoardVO vo : list) {
 			System.out.println(vo);
 		}
+	}
+	
+	private void selectBoardWhereMap() {
+		// HashMap key, value 값으로 입력 받기
+		Map<String, String> keywords = new HashMap<>();
+		
+		//1. 제목 글쓴이 입력받는 값이 동일한 게시글 조회 
+			keywords.put("title", "왕기초 웹 개발 프로젝트 모집");
+			keywords.put("writerid", "user123");
+		
+		//2. 제목 입력받는 값이 동일한 게시글 조회 
+
+		
+		//3. 글쓴이 입력받는 값이 동일한 게시글 조회 
+		
+		//4. 전체 게시글 조회
 		
 		
+		List<BoardVO> list = boardDao.selectByWhereMap(keywords);
+		for(BoardVO vo : list) {
+			System.out.println(vo);
+		}
 	}
 	
 	
@@ -92,7 +127,8 @@ public class MenuUI {
 		//deleteById();
 		//서치올보드 
 		//searchBoard();
-		selectBoardWhere();
+		//selectBoardWhere();
+		selectBoardWhereMap();
 		
 	}
 

@@ -4,14 +4,14 @@ import java.util.List;
 
 public class BoardVO {
 
-	private int post_id;
+	private int postid;
 	private String title;
-	private String writerId;
+	private String writerid;
 	private String content;
 	private String location;
 	private int pay;
-	private String workTime;
-	private String regDate;
+	private String worktime;
+	private String regdate;
 	private String deadline;
 	private byte[] image;
 
@@ -21,16 +21,16 @@ public class BoardVO {
 
 	// 전체 필드 생성자
 
-	public BoardVO(int post_id, String title, String writerId, String content, String location, int pay,
-			String workTime, String regDate, String deadline, byte[] image) {
-		this.post_id = post_id;
+	public BoardVO(int postid, String title, String writerid, String content, String location, int pay,
+			String worktime, String regdate, String deadline, byte[] image) {
+		this.postid = postid;
 		this.title = title;
-		this.writerId = writerId;
+		this.writerid = writerid;
 		this.content = content;
 		this.location = location;
 		this.pay = pay;
-		this.workTime = workTime;
-		this.regDate = regDate;
+		this.worktime = worktime;
+		this.regdate = regdate;
 		this.deadline = deadline;
 		this.image = image;
 	}
@@ -38,26 +38,26 @@ public class BoardVO {
 	// postId를 제외한 생성자 (insert 시 사용)
 
 	// BoardVO.java 안에 아래 생성자 추가
-	public BoardVO(String title, String writerId, String content, String location, int pay, String workTime,
-			String regDate, String deadline, byte[] image) {
+	public BoardVO(String title, String writerid, String content, String location, int pay, String worktime,
+			String regdate, String deadline, byte[] image) {
 		this.title = title;
-		this.writerId = writerId;
+		this.writerid = writerid;
 		this.content = content;
 		this.location = location;
 		this.pay = pay;
-		this.workTime = workTime;
-		this.regDate = regDate;
+		this.worktime = worktime;
+		this.regdate = regdate;
 		this.deadline = deadline;
 		this.image = image;
 	}
 
 	// Getter & Setter
 	public int getPostId() {
-		return post_id;
+		return postid;
 	}
 
-	public void setPostId(int postId) {
-		this.post_id = postId;
+	public void setPostId(int postid) {
+		this.postid = postid;
 	}
 
 	public String getTitle() {
@@ -69,11 +69,11 @@ public class BoardVO {
 	}
 
 	public String getWriterId() {
-		return writerId;
+		return writerid;
 	}
 
-	public void setWriterId(String writerId) {
-		this.writerId = writerId;
+	public void setWriterId(String writerid) {
+		this.writerid = writerid;
 	}
 
 	public String getContent() {
@@ -101,19 +101,19 @@ public class BoardVO {
 	}
 
 	public String getWorkTime() {
-		return workTime;
+		return worktime;
 	}
 
 	public void setWorkTime(String workTime) {
-		this.workTime = workTime;
+		this.worktime = workTime;
 	}
 
 	public String getRegDate() {
-		return regDate;
+		return regdate;
 	}
 
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+	public void setRegDate(String regdate) {
+		this.regdate = regdate;
 	}
 
 	public String getDeadline() {
@@ -134,8 +134,8 @@ public class BoardVO {
 
 	@Override
 	public String toString() {
-		return "BoardVO [postId=" + post_id + ", title=" + title + ", writerId=" + writerId + ", content=" + content
-				+ ", location=" + location + ", pay=" + pay + ", workTime=" + workTime + ", regDate=" + regDate
+		return "BoardVO [postid=" + postid + ", title=" + title + ", writerid=" + writerid + ", content=" + content
+				+ ", location=" + location + ", pay=" + pay + ", worktime=" + worktime + ", regdate=" + regdate
 				+ ", deadline=" + deadline + ", image=" + (image != null ? "yes" : "no") + "]";
 	}
 }

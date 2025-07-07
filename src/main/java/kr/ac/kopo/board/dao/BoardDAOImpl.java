@@ -24,11 +24,11 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	    StringBuilder sql = new StringBuilder();
-	    sql.append("SELECT post_id, title, writer_id, content, location, pay, work_time, ");
-	    sql.append("       TO_CHAR(reg_date, 'YYYY-MM-DD') reg_date, ");
+	    sql.append("SELECT postid, title, writerid, content, location, pay, worktime, ");
+	    sql.append("       TO_CHAR(regdate, 'YYYY-MM-DD') regdate, ");
 	    sql.append("       TO_CHAR(deadline, 'YYYY-MM-DD') deadline, image ");
 	    sql.append("  FROM tbl_project_post ");
-	    sql.append(" ORDER BY post_id DESC");
+	    sql.append(" ORDER BY postid DESC");
 
 
 
@@ -37,14 +37,14 @@ public class BoardDAOImpl implements BoardDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				int postId = rs.getInt("post_id");
+				int postId = rs.getInt("postid");
 				String title = rs.getString("title");
-				String writerId = rs.getString("writer_id");
+				String writerId = rs.getString("writerid");
 				String content = rs.getString("content");
 				String location = rs.getString("location");
 				int pay = rs.getInt("pay");
-				String workTime = rs.getString("work_time");
-				String regDate = rs.getString("reg_date");
+				String workTime = rs.getString("worktime");
+				String regDate = rs.getString("regdate");
 				String deadline = rs.getString("deadline");
 				byte[] image = rs.getBytes("image"); // 🔹 이미지 byte 배열로 읽기
 
@@ -68,8 +68,8 @@ public class BoardDAOImpl implements BoardDAO {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("INSERT INTO tbl_project_post (");
-		sql.append("post_id, title, writer_id, content, location, pay, ");
-		sql.append("work_time, reg_date, deadline, image) ");
+		sql.append("postid, title, writerid, content, location, pay, ");
+		sql.append("worktime, regdate, deadline, image) ");
 		sql.append("VALUES (seq_project_post.NEXTVAL, ?, ?, ?, ?, ?, ?, SYSDATE, TO_DATE(?, 'YYYY-MM-DD'), ?)");
 
 
@@ -107,13 +107,13 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardVO selectBoardByNo(int postId) {
 
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT post_id, title, writer_id, content, ");
-		sql.append("       location, pay, work_time, ");
-		sql.append("       TO_CHAR(reg_date, 'yyyy-mm-dd') AS reg_date, ");
+		sql.append("SELECT postid, title, writerid, content, ");
+		sql.append("       location, pay, worktime, ");
+		sql.append("       TO_CHAR(regdate, 'yyyy-mm-dd') AS reg_date, ");
 		sql.append("       TO_CHAR(deadline, 'yyyy-mm-dd') AS deadline, ");
 		sql.append("       image ");
 		sql.append("  FROM tbl_project_post ");
-		sql.append(" WHERE post_id = ? ");
+		sql.append(" WHERE postid = ? ");
 
 
 		try (Connection conn = new ConnectionFactory().getConnection();
@@ -123,14 +123,14 @@ public class BoardDAOImpl implements BoardDAO {
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				int post = rs.getInt("post_id");
+				int post = rs.getInt("postid");
 				String title = rs.getString("title");
-				String writerId = rs.getString("writer_id");
+				String writerId = rs.getString("writerid");
 				String content = rs.getString("content");
 				String location = rs.getString("location");
 				int pay = rs.getInt("pay");
-				String workTime = rs.getString("work_time");
-				String regDate = rs.getString("reg_date");
+				String workTime = rs.getString("worktime");
+				String regDate = rs.getString("regdate");
 				String deadline = rs.getString("deadline");
 				byte[] image = rs.getBytes("image"); // 🔹 이미지 가져오기
 
@@ -156,7 +156,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void deleteBoardByNo(int boardNo) {
 
-	    String sql = "DELETE FROM tbl_project_post WHERE post_id = ?";
+	    String sql = "DELETE FROM tbl_project_post WHERE postid = ?";
 	    try (Connection conn = new ConnectionFactory().getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        pstmt.setInt(1, boardNo);

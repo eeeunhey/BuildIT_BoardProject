@@ -51,11 +51,15 @@
 						상태 유지</label> <a href="#" class="link">비밀번호 찾기</a>
 				</div>
 
-				<label>회원 유형:</label><br> <input type="checkbox" id="client"
-					name="type" value="CLIENT" onclick="onlyOne(this)"> <label
-					for="client">클라이언트</label><br> <input type="checkbox"
-					id="partner" name="type" value="PARTNER" onclick="onlyOne(this)">
-				<label for="partner">파트너</label><br>
+				<!-- 회원 유형 탭 -->
+				<div class="member-type-tab">
+					<input type="radio" id="client" name="type" value="CLIENT" checked>
+					<label for="client" class="tab client-tab">CLIENT<br>
+					<span>파트너스 찾기</span></label> <input type="radio" id="partner" name="type"
+						value="PARTNER"> <label for="partner"
+						class="tab partner-tab">PARTNER<br>
+					<span></span>프로젝트 찾기</label>
+				</div>
 
 				<button type="submit" class="login-btn">로그인</button>
 
@@ -65,7 +69,7 @@
 			</form>
 
 			<div class="signup-link">
-				아직 빌드잇의 통합회원이 아니신가요? <a href="#">회원가입</a>
+				아직 빌드잇의 통합회원이 아니신가요? <a href="${pageContext.request.contextPath}//login/sign.do">회원가입</a>
 			</div>
 		</div>
 	</div>
