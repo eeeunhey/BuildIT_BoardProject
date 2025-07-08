@@ -109,7 +109,7 @@ public class BoardDAOImpl implements BoardDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT postid, title, writerid, content, ");
 		sql.append("       location, pay, worktime, ");
-		sql.append("       TO_CHAR(regdate, 'yyyy-mm-dd') AS reg_date, ");
+		sql.append("       TO_CHAR(regdate, 'yyyy-mm-dd') AS regdate, ");
 		sql.append("       TO_CHAR(deadline, 'yyyy-mm-dd') AS deadline, ");
 		sql.append("       image ");
 		sql.append("  FROM tbl_project_post ");

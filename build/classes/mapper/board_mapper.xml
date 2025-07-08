@@ -36,22 +36,21 @@
 				writerid = #{writerid}
 			</if>
 		</where>
-
 		<!-- 동적 태그를 만들어보장 <where>태그로 묶어준다 -> and 조건에서 or 조건으로 적용 조건문처리 - -->
 	</select>
-	
-		<select id="selectByWhereMap" resultMap="boardMap"
-		parameterType="boardVO">
+
+	<select id="selectByWhereMap" resultMap="boardMap"
+		parameterType="map">
 		<!-- where절로 특정 조건 검색하기 타이틀명과 작성자 검색해보기 -->
+		<!-- 값이 맵형태로(키, 벨류) 쌍인깐 title / write 키 값을 가져온다 -->
 		<include refid="selectBoard" />
 		<where>
 			<if test="title != null">title = #{title}</if>
 
 			<if test="writerid != null">
-				writerid = #{writerid}
+				and writerid = #{writerid}
 			</if>
 		</where>
-
 		<!-- 동적 태그를 만들어보장 <where>태그로 묶어준다 -> and 조건에서 or 조건으로 적용 조건문처리 - -->
 	</select>
 
@@ -62,9 +61,17 @@
 		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->
 	</select>
 
+
 	<select id="selectByNo2" resultMap="boardMap"
 		parameterType="int">
 		<include refid="selectBoard" />
+		where
+		postid = #{post_id}
+		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->
+	</select>
+
+	<select id="selectByNo3" resultType="map" parameterType="int">
+		<include refid = "selectBoard"/>
 		where
 		postid = #{post_id}
 		<!-- 이미어차피 값은 하나만 들어가니깐 이름 아무거나 해도 알아서 매핑이 된다 -->

@@ -62,5 +62,11 @@ public class BoardDAO {
 	public List<BoardVO> selectByWhereMap (Map<String, String> keywords) {
 		return session.selectList("board.batisdao.BoardDAO.selectByWhereMap", keywords);
 	}
+	
+	public Map<String, Object> selectByNoMap(int postId) {
+		
+		return session.selectOne("board.batisdao.BoardDAO.selectByNo3", postId);
+
+	}
 }
 

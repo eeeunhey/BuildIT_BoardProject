@@ -116,6 +116,22 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
    - `selectBoardWhere()`: 제목/작성자 조건으로 게시글 검색 (VO 사용)  
    - `selectBoardWhereMap()`: 키-값 조건으로 게시글 검색 (Map 사용)  
 
+### 2025-07-08
+- `main.css` css 부분 수정 
+
+  📚 MyBatis 적용 준비  
+
+1. `board_mapper.xml`  
+   - `selectByNo3`: HashMap (key, value) 형태로 게시글 번호를 조회
+
+
+2. `BoardDAO.java`  
+   - `selectByNoMap`: 맵 형태 게시글 번호로 조회하는 DAO 메소드 
+
+
+3. `MenuUI.java`  
+   - `selectByNoMap()`: 맵형태 게시글 번호로 특정 게시글 출력  
+  
 
 
 > 함께 만들어가는 프로젝트에서 **실력과 자신감**을 길러보세요.  
