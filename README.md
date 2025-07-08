@@ -63,11 +63,11 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 
 
 ### 2025-07-06
-<sub>
+
 - `writerForm.jsp`에서 입력한 값이 DB에 저장됨  
 - `multipart/form-data` 처리를 위해 `web.xml`에 `multipart-config` 추가  
 
-<sub>📚 MyBatis 적용 준비</sub>  
+📚 MyBatis 적용 준비
 
 1. `board_mapper.xml`  
    - `insert`: 게시글 등록 쿼리  
@@ -98,7 +98,7 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 - `MemverVO.java` 수정 추가 
 - `loginController.java' 클라이언트 / 파트너 선택 처리 추가
 - `login.css` 수정
-<sub>📚 MyBatis 적용 준비</sub>  
+  📚 MyBatis 적용 준비  
 
 1. `board_mapper.xml`  
    - `selectByNo`: 게시글 번호로 게시글 1건 조회  
