@@ -119,6 +119,16 @@ public class MenuUI {
 			System.out.println(key + ":"+map.get(key));
 		}
 	}
+	
+	private void selectByNos() {
+		// 번호를 배열로 가져오자 입력한 번호에 대한 게시글을 가져오고 싶다
+		// 여러 레코드(BoardVO) 받아오니깐 List
+		int[] nos = {1,3,5,7};
+		List<BoardVO> list = boardDao.selectByNos(nos);
+		for(BoardVO vo : list) {
+			System.out.println(vo);
+		}
+	}
 
 	public void execute() {
 		// 메소드 생성
@@ -136,7 +146,8 @@ public class MenuUI {
 		// searchBoard();
 		// selectBoardWhere();
 		// selectBoardWhereMap();
-		   selectByNoMap();
+		// selectByNoMap();
+		   selectByNos();	
 
 	}
 

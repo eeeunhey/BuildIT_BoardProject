@@ -42,15 +42,22 @@
       </div>
     </div>
 
-    <!-- 메뉴 -->
-    <div class="main-menu">
-      <a href="${pageContext.request.contextPath}/board/writeForm.do">프로젝트 등록</a>
-      <a href="${pageContext.request.contextPath}/board/list.do">프로젝트 탐색</a>
-      <a href="#">나의 성장 잔디</a>
-      <a href="#">강의 / 스터디 정보 공유</a>
-      <a href="#">참여 프로젝트 기록</a>
-    </div>
+<!-- 왼쪽 그룹: 로고 + 검색창 + 메뉴 -->
+<div class="left-group">
+  <!-- 로고 + 검색창 묶음 -->
+  <div class="logo-search">
+    <!-- ...로고 및 검색창은 그대로 유지... -->
   </div>
+
+  <!-- 메뉴를 검색창 아래로 배치 -->
+  <div class="main-menu">
+    <a href="${pageContext.request.contextPath}/board/writeForm.do">프로젝트 등록</a>
+    <a href="${pageContext.request.contextPath}/board/list.do">프로젝트 탐색</a>
+    <a href="#">나의 성장 잔디</a>
+    <a href="#">강의 / 스터디 정보 공유</a>
+    <a href="#">참여 프로젝트 기록</a>
+  </div>
+</div>
 
   <!-- 오른쪽: 회원 정보 -->
   <div class="right-group">

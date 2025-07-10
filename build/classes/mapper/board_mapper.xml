@@ -24,6 +24,21 @@
 		'yyyy-mm-dd') as deadline
 		from tbl_project_post
 	</sql>
+	
+	<select id="selectByNos" resultMap="boardMap" parameterType="int[]">
+		<include refid="selectBoard"/>
+		where postId in 
+		<!-- 배열이니깐 array 타입이라고 적어줘야 한다 
+			separator = "," 1,2,3, 이런식으로 지정한 수를 구분시켜준다
+			open="(" close=")" (1,2,3,4) 이런식으로 값을 넣겠다는 의미이다
+		 -->
+			<foreach separator="," collection="array" item="no" open="(" close=")">
+				#{no}
+			</foreach>
+		
+		
+		
+	</select>
 
 	<select id="selectWhere" resultMap="boardMap"
 		parameterType="boardVO">

@@ -66,7 +66,10 @@ public class BoardDAO {
 	public Map<String, Object> selectByNoMap(int postId) {
 		
 		return session.selectOne("board.batisdao.BoardDAO.selectByNo3", postId);
-
+	}
+	
+	public List<BoardVO> selectByNos(int[] nos) {
+		return session.selectList("board.batisdao.BoardDAO.selectByNos", nos);
 	}
 }
 
