@@ -38,9 +38,6 @@
 		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
 	</mvc:view-resolvers>
 	
-	<bean class="kr.ac.kopo.vo.Dog" id="dog">
-		<property name="name" value="강아지"></property>
-	</bean>
 
 </beans>
 
