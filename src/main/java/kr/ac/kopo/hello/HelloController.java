@@ -1,5 +1,7 @@
 package kr.ac.kopo.hello;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,10 +19,9 @@ public class HelloController {
 		
 		ModelAndView mav = new ModelAndView("hello/hello");
 		mav.addObject("msg", "Hi 스프링 반가워 제발 나와라");
+		mav.addObject("name", "내이름은 은혜야~~");
+		mav.addObject("today", LocalDate.now());
 		
-		return mav;
-		
+		return mav;	
 	}
-	
-
 }
