@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>BuildIT - 실무 프로젝트 채용 플랫폼</title>
-<link rel="stylesheet" href="/Board-WEB/resources/css/layout.css">
-<link rel="stylesheet" href="/Board-WEB/resources/css/my_css.css">
-<link rel="stylesheet" href="/Board-WEB/resources/css/main.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my_css.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 </head>
 <body>
 	<header>

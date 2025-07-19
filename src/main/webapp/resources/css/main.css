@@ -1,197 +1,73 @@
 @charset "UTF-8";
 
-/* 전체 섹션을 브라우저 너비에 꽉 차게 */
-.main-section {
-	padding: 40px 40px; /* 또는 0으로 하면 완전 꽉 차게 됨 */
-	background-color: #fff;
+/* ✅ 반응형 상단바: 화면 너비 1024px 이하부터 적용 */
+@media ( max-width : 1024px) {
+	.header-container {
+		flex-wrap: wrap;
+		padding: 15px 20px;
+	}
+	.left-section {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+	}
+	.main-menu {
+		flex-wrap: wrap;
+		gap: 16px;
+		justify-content: center;
+		margin-top: 10px;
+	}
+	.center-section {
+		order: 3;
+		width: 100%;
+		padding: 10px 0;
+		justify-content: center;
+	}
+	.custom-search {
+		width: 100%;
+		max-width: 100%;
+	}
+	.right-section {
+		order: 2;
+		margin-top: 10px;
+		width: 100%;
+		justify-content: flex-end;
+	}
+}
+
+/* ✅ 더 작은 화면 (모바일, 768px 이하) */
+@media ( max-width : 768px) {
+	.header-container {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 20px;
+	}
+	.left-section {
+		flex-direction: column;
+		align-items: center;
+	}
+	.main-menu {
+		flex-direction: column;
+		align-items: center;
+	}
+	.right-section {
+		justify-content: center;
+	}
+	.custom-search {
+		padding: 6px 12px;
+	}
+	.dropdown-toggle {
+		font-size: 13px;
+		padding: 4px 10px;
+	}
+	.search-box input[type="text"] {
+		font-size: 13px;
+	}
+}
+
+.collection-card img {
 	width: 100%;
-}
-
-/* 상단 통계 카드 */
-.stat-container {
-	display: flex;
-	justify-content: space-between;
-	gap: 20px;
-	background-color: #fffde0;
-	padding: 30px;
-	border-radius: 10px;
-	box-shadow: inset 0 -1px 0 #eee;
-	width: 100%; /* 전체 너비 사용 */
-}
-
-.stat-card {
-	background-color: white;
-	flex: 1;
-	padding: 20px;
-	text-align: center;
-	border-radius: 12px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* 카드 내부 텍스트 */
-.stat-card .count {
-	font-size: 28px;
-	font-weight: bold;
-	margin-bottom: 10px;
-	color: #222;
-}
-
-.stat-card .label {
-	font-size: 14px;
-	color: #555;
-}
-
-/* 필터 영역 */
-.filter-container {
-	margin-top: 40px;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
-	align-items: center;
-	width: 100%;
-}
-
-.filter-container select, .search-input {
-	height: 40px;
-	padding: 0 10px;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-}
-
-.search-input {
-	flex: 1;
-	min-width: 200px;
-}
-
-.filter-buttons {
-	display: flex;
-	gap: 10px;
-}
-
-.reset-btn, .search-btn {
-	padding: 10px 20px;
-	border: none;
-	border-radius: 6px;
-	font-weight: bold;
-	cursor: pointer;
-}
-
-.reset-btn {
-	background-color: #f3f3f3;
-	color: #333;
-}
-
-.search-btn {
-	background-color: #ffe400;
-	color: #000;
-}
-
-/* 오늘의 토픽 슬라이드 */
-.today-topic-container {
-	position: relative;
-	width: 100%;
-	height: 260px;
-	border-radius: 20px;
-	margin-top: 40px;
-	overflow: hidden;
-	margin-bottom: 80px;
-}
-
-.topic-bg-img {
-	width: 100%;
-	height: 100%;
+	height: auto;
 	object-fit: cover;
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	z-index: 0;
-	transition: opacity 0.5s ease-in-out;
-}
-
-.topic-bg-img.active {
-	opacity: 1;
-	z-index: 1;
-}
-
-.topic-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	color: white;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding: 20px 30px;
-	background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%,
-		rgba(0, 0, 0, 0.1) 60%, transparent 100%);
-	z-index: 2;
-}
-
-.topic-badge {
-	background-color: #845EF7;
-	color: white;
-	padding: 6px 14px;
-	border-radius: 20px;
-	font-weight: bold;
-	font-size: 14px;
-	width: fit-content;
-}
-
-.topic-info-text {
-	margin-bottom: 20px;
-}
-
-.topic-info-text h2 {
-	font-size: 22px;
-	font-weight: bold;
-	margin: 0;
-}
-
-.topic-info-text span {
-	font-size: 15px;
-	margin-top: 6px;
-	display: inline-block;
-	color: #eee;
-}
-
-.slide-control {
-	position: absolute;
-	right: 20px;
-	bottom: 20px;
-	display: flex;
-	gap: 10px;
-	font-size: 14px;
-	background: rgba(0, 0, 0, 0.4);
-	padding: 6px 12px;
-	border-radius: 20px;
-	align-items: center;
-	z-index: 3;
-}
-
-.pause-icon {
-	font-size: 16px;
-}
-
-/* 진행 바 */
-.progress-bar-box {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 6px;
-	background-color: #e0e0e0;
-	border-radius: 10px;
-	overflow: hidden;
-	z-index: 3;
-}
-
-.progress-bar {
-	height: 100%;
-	background-color: #845EF7;
-	width: 0%;
-	transition: width 0.5s ease;
 }

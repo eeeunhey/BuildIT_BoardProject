@@ -1,158 +1,135 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
-/* 초기화 */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: #111;
-}
-
-/* 전체 상단바 영역 */
-.top-bar {
-  width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 24px 40px;
+/* 전체 헤더 영역 */
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 40px;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  box-sizing: border-box;
 }
 
-/* 왼쪽 그룹: 로고 + 검색 + 메뉴 */
-.left-group {
+/* 왼쪽 영역: 로고+검색창 위 / 메뉴 아래 */
+.left-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex: 1;
+  gap: 10px;
 }
 
-/* 로고 + 검색창 수직 정렬 */
-.logo-search {
+/* ⬆️ 로고와 검색창 가로 정렬을 위한 내부 래퍼 */
+.top-left-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 24px; /* 로고와 검색창 사이 거리 */
 }
 
-/* 로고 크기 */
 .logo-img {
-  width: 70px;
-  height: 50px;
-  object-fit: contain;
+  height: 34px;
 }
 
-/* 검색창 중앙 정렬 */
+/* 메뉴는 아래쪽에서 가로로 정렬 */
+.main-menu {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+}
+
+.main-menu a {
+  text-decoration: none;
+  color: #111;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.main-menu a:hover {
+  color: #7a2ff2;
+}
 .custom-search {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: relative;
+
+  border-radius: 20px;       /* 둥근 직사각형 형태 */
+  padding: 4px 10px;
+  height: 42px;
+  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.09);
 }
 
 /* 드롭다운 버튼 */
 .dropdown-toggle {
-  background: #f4f4f4;
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 4px;
+  background: transparent;
+  border: none;
   cursor: pointer;
   font-size: 14px;
+  font-family: inherit;
+  padding: 6px 10px;
+  color: #333;
 }
 
-/* 드롭다운 메뉴 */
+/* 검색 input */
+.search-box input[type="text"] {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 200px;
+  color: #333;
+}
+
+/* 검색 버튼 */
+.search-box button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+/* 드롭다운 메뉴는 기존 유지 */
 .dropdown-menu {
-  position: absolute;
-  top: 36px;
-  left: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  width: 100px;
   display: none;
-  z-index: 1000;
+  position: absolute;
+  width: 100px;
+  left: 0;
+  top: 100%;
+  margin: 0;
+  padding: 6px 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  list-style: none;
+  z-index: 30;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-menu li {
-  padding: 8px 10px;
+  padding: 7px 14px;
   cursor: pointer;
-}
-
-.dropdown-menu li:hover {
-  background: #f0f0f0;
-}
-
-/* 검색창 인풋 */
-.search-box input[type="text"] {
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 4px;
   font-size: 14px;
-  width: 320px;
+  font-family: inherit;
 }
 
-.search-box button {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* 🔥 Wishket 스타일 메뉴 */
-.main-menu {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: 32px;
-  padding: 12px 40px;
-  margin-top: 16px;
-  scrollbar-width: none; /* Firefox */
-}
-
-/* 스크롤바 숨김 (Chrome 등) */
-.main-menu::-webkit-scrollbar {
-  display: none;
-}
-
-.main-menu a {
-  font-size: 16px;
-  font-weight: 500;
-  color: #222;
-  padding: 8px 0;
-  flex-shrink: 0;
-  position: relative;
-  transition: color 0.2s;
-}
-
-.main-menu a:hover {
-  color: #000;
-}
-
-.main-menu a:hover::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #000;
-  transition: all 0.3s;
-}
-
-/* 오른쪽 그룹: 로그인 정보 */
-.right-group {
+/* 오른쪽: 회원정보 */
+.right-section {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
+  min-width: 180px;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
