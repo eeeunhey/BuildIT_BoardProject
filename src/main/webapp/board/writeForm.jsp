@@ -9,10 +9,8 @@
 <title>π 프로젝트 등록하기</title>
 
 <!-- 외부 CSS -->
-<link rel="stylesheet" href="/Board-WEB/resources/css/layout.css">
-<link rel="stylesheet" href="/Board-WEB/resources/css/my_css.css">
-<link rel="stylesheet" href="/Board-WEB/resources/css/writeForm.css">
-
+ <link rel="stylesheet" href="/Board-WEB/resources/css/writeForm.css"
+ -->
 <!-- JS 유효성 검사 -->
 <script>
 	function checkForm() {
@@ -78,7 +76,7 @@
 	<!-- 본문 -->
 	<section>
 		<div align="center" id="content">
-			<hr>
+
 			<h2>프로젝트 등록</h2>
 			<hr>
 			<br>

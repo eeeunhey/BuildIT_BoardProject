@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 /* ✅ 반응형 상단바: 화면 너비 1024px 이하부터 적용 */
+.main-section {
+	padding-top: 50px; /* 상단바 높이만큼 여백 확보 */
+}
+
 @media ( max-width : 1024px) {
 	.header-container {
 		flex-wrap: wrap;

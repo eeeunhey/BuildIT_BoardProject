@@ -1,135 +1,113 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
-/* 전체 헤더 영역 */
+/* 고정 상단바 스타일 */
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 14px 40px;
-  border-bottom: 1px solid #e0e0e0;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500;
-  box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 30px;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	height: 90px;
 }
 
-/* 왼쪽 영역: 로고+검색창 위 / 메뉴 아래 */
-.left-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.header-left, .header-center, .header-right {
+	display: flex;
+	align-items: center;
 }
 
-/* ⬆️ 로고와 검색창 가로 정렬을 위한 내부 래퍼 */
-.top-left-row {
-  display: flex;
-  align-items: center;
-  gap: 24px; /* 로고와 검색창 사이 거리 */
+/* 왼쪽 로고 */
+.header-left img.logo-img {
+	height: 80px;
 }
 
-.logo-img {
-  height: 34px;
+/* 가운데 검색창 */
+.header-center {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 20px;
 }
 
-/* 메뉴는 아래쪽에서 가로로 정렬 */
+.custom-search {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.search-box input[type="text"] {
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	border-radius: 6px 0 0 6px;
+	font-size: 14px;
+	width: 200px;
+}
+
+.search-box button {
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	border-left: none;
+	border-radius: 0 6px 6px 0;
+	background-color: #f1f1f1;
+	cursor: pointer;
+}
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown-toggle {
+	padding: 8px 12px;
+	background-color: #f9f9f9;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	background-color: white;
+	border: 1px solid #ccc;
+	z-index: 1001;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 오른쪽 메뉴 + 로그인 정보 */
+.header-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 6px;
+}
+
 .main-menu {
-  display: flex;
-  gap: 18px;
-  justify-content: flex-start;
+	display: flex;
+	gap: 24px;
 }
 
 .main-menu a {
-  text-decoration: none;
-  color: #111;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.3px;
-  line-height: 1.5;
-  transition: color 0.2s ease;
+	text-decoration: none;
+	color: #333;
+	font-weight: 500;
 }
 
-.main-menu a:hover {
-  color: #7a2ff2;
-}
-.custom-search {
-  display: flex;
-  align-items: center;
-
-  border-radius: 20px;       /* 둥근 직사각형 형태 */
-  padding: 4px 10px;
-  height: 42px;
-  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.09);
+.user-info {
+	font-size: 13px;
 }
 
-/* 드롭다운 버튼 */
-.dropdown-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-family: inherit;
-  padding: 6px 10px;
-  color: #333;
-}
-
-/* 검색 input */
-.search-box input[type="text"] {
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 6px 10px;
-  font-size: 14px;
-  font-family: inherit;
-  width: 200px;
-  color: #333;
-}
-
-/* 검색 버튼 */
-.search-box button {
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  color: #555;
-  cursor: pointer;
-  padding: 6px 10px;
-}
-
-/* 드롭다운 메뉴는 기존 유지 */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  width: 100px;
-  left: 0;
-  top: 100%;
-  margin: 0;
-  padding: 6px 0;
-  border: 1px solid #ccc;
-  background: #fff;
-  list-style: none;
-  z-index: 30;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-.dropdown-menu li {
-  padding: 7px 14px;
-  cursor: pointer;
-  font-size: 14px;
-  font-family: inherit;
-}
-
-/* 오른쪽: 회원정보 */
-.right-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
-  min-width: 180px;
-  justify-content: flex-end;
-  flex-shrink: 0;
+.user-info a {
+	margin-left: 8px;
+	color: #6c63ff;
+	text-decoration: none;
+	font-weight: 500;
 }

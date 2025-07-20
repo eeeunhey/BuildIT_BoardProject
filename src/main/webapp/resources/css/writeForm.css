@@ -1,28 +1,18 @@
-
 @charset "UTF-8";
-
-/* -------- 기본 설정 -------- */
-body {
-  font-family: 'Work Sans', 'Noto Sans', sans-serif;
-  background-color: #ffffff;
-  color: #111418;
-  margin: 0;
-  padding: 0;
-}
 
 /* 폼 전체 중앙 정렬 및 배경 정리 */
 #content {
-  max-width: 900px;
-  width: 95%;
-  margin: 40px auto;
-  padding: 48px 40px;
-  background-color: #ffffff;;
+  max-width: 1000px;
+  width: 80%;
+  margin: 20px auto;
+  padding: 28px 40px;
+  background-color: #ffffff;
   border-radius: 0;
   box-shadow: none;
 }
 
 /* 제목 */
-h2 {
+#content h2 {
   font-size: 32px;
   font-weight: 700;
   text-align: center;
@@ -30,13 +20,13 @@ h2 {
 }
 
 /* 테이블 스타일 */
-form table {
+#content form table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 24px;
 }
 
-form th {
+#content form th {
   text-align: left;
   font-size: 18px;
   font-weight: 600;
@@ -46,15 +36,15 @@ form th {
   color: #333;
 }
 
-form td {
+#content form td {
   padding-top: 4px;
 }
 
 /* 입력 필드 공통 */
-form input[type="text"],
-form input[type="number"],
-form input[type="date"],
-form textarea {
+#content form input[type="text"],
+#content form input[type="number"],
+#content form input[type="date"],
+#content form textarea {
   width: 100%;
   padding: 16px 20px;
   font-size: 16px;
@@ -65,20 +55,20 @@ form textarea {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-form input:focus,
-form textarea:focus {
+#content form input:focus,
+#content form textarea:focus {
   border-color: #0c7ff2;
   box-shadow: 0 0 0 3px rgba(12, 127, 242, 0.1);
   outline: none;
 }
 
-form textarea {
+#content form textarea {
   resize: vertical;
   min-height: 140px;
 }
 
 /* 읽기 전용 박스 */
-.readonly-box {
+#content .readonly-box {
   padding: 16px 20px;
   background-color: #f0f2f5;
   border-radius: 8px;
@@ -87,7 +77,7 @@ form textarea {
 }
 
 /* 태그 체크박스 */
-.tag-checkboxes {
+#content .tag-checkboxes {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -95,7 +85,7 @@ form textarea {
 }
 
 /* 업로드 박스 */
-.upload-box {
+#content .upload-box {
   border: 1px dashed #dbe0e6;
   border-radius: 8px;
   padding: 40px 20px;
@@ -104,19 +94,19 @@ form textarea {
   margin-top: 16px;
 }
 
-.upload-title {
+#content .upload-title {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
-.upload-subtitle {
+#content .upload-subtitle {
   font-size: 14px;
   color: #60758a;
   margin-bottom: 16px;
 }
 
-.upload-button {
+#content .upload-button {
   display: inline-block;
   padding: 12px 24px;
   background-color: #f0f2f5;
@@ -128,12 +118,12 @@ form textarea {
   transition: background-color 0.2s ease;
 }
 
-.upload-button:hover {
+#content .upload-button:hover {
   background-color: #e4e7eb;
 }
 
 /* 이미지 미리보기 */
-#preview {
+#content #preview {
   margin-top: 20px;
   max-width: 300px;
   border-radius: 8px;
@@ -142,7 +132,7 @@ form textarea {
 }
 
 /* 제출 버튼 */
-button[type="submit"] {
+#content button[type="submit"] {
   display: block;
   margin: 40px auto 0;
   background-color: #0c7ff2;
@@ -156,34 +146,34 @@ button[type="submit"] {
   transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
-button[type="submit"]:hover {
+#content button[type="submit"]:hover {
   background-color: #0568d6;
   transform: translateY(-2px);
 }
 
 /* -------- 반응형 -------- */
 @media screen and (max-width: 768px) {
-  form table {
+  #content form table {
     border-spacing: 0 16px;
   }
 
-  form th {
+  #content form th {
     display: block;
     width: 100%;
     margin-bottom: 6px;
     font-size: 16px;
   }
 
-  form td {
+  #content form td {
     display: block;
     width: 100%;
   }
 
-  button[type="submit"] {
+  #content button[type="submit"] {
     width: 100%;
   }
 
-  #preview {
+  #content #preview {
     max-width: 100%;
   }
 }
