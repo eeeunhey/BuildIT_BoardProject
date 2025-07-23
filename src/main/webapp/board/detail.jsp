@@ -62,6 +62,14 @@ td {
 					<th>마감일</th>
 					<td>${board.deadline}</td>
 				</tr>
+
+				<tr>
+					<th>이미지</th>
+					<td><img
+						src="${pageContext.request.contextPath}/imageView?postId=${board.postId}"
+						alt="이미지" width="300" style="border: 1px solid #ccc;" /></td>
+				</tr>
+
 			</table>
 		</div>
 
@@ -90,12 +98,12 @@ td {
 	<br>
 	<div align="center">
 		<c:choose>
-			<c:when test="${sessionScope.userType eq 'company'}">
+			<c:when test="${sessionScope.userType eq 'client'}">
 				<button id="listBtn">목록</button>
 				<button id="updateBtn">수정</button>
 				<button id="deleteBtn">삭제</button>
 			</c:when>
-			<c:when test="${sessionScope.userType eq 'user'}">
+			<c:when test="${sessionScope.userType eq 'partner'}">
 				<button id="listBtn">목록</button>
 				<button id="applyBtn">지원</button>
 			</c:when>
