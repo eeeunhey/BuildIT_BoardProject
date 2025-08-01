@@ -14,6 +14,11 @@ BoardVO board = boardDao.selectBoardByNo(no);
 request.setAttribute("board", board);
 %>
 
+<%
+    Object userType = session.getAttribute("userType");
+    System.out.println("[DEBUG] userType = " + userType);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +44,8 @@ td {
 </script>
 </head>
 <body>
+	
+
 	<div class="job-conditions">
 		<div class="condition-box">
 			<table>
@@ -103,7 +110,7 @@ td {
 				<button id="updateBtn">수정</button>
 				<button id="deleteBtn">삭제</button>
 			</c:when>
-			<c:when test="${sessionScope.userType eq 'partner'}">
+			<c:when test="${sessionScope.userType eq 'PARTNER'}">
 				<button id="listBtn">목록</button>
 				<button id="applyBtn">지원</button>
 			</c:when>

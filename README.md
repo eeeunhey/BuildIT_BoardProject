@@ -199,4 +199,9 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 	- `topMenu` 구조 수정  
 	- `writeForm.jsp` 수정  
 
+### 2025-08-01
+	- `LoginProcessController.java` Type 정보를 가져올 수 있도록 수정
+	- `README.md` update
+	- `Reference.md` update
+
 > **Build it, with Buildit.**

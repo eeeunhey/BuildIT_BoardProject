@@ -28,8 +28,6 @@ public class LoginProcessController implements Controller {
 		// DB(t_member)에서 로그인여부 판단
 		MemberVO member = new MemberVO(id, password, type);
 		MemberVO userVO = memberService.login(member);
-		
-		
 
 		// 판단여부에 따른 결과 응답(response)
 		String url = "";
@@ -43,6 +41,11 @@ public class LoginProcessController implements Controller {
 			// 세션등록
 			HttpSession session = request.getSession();
 			session.setAttribute("userVO", userVO);
+
+			// 회원 유형 세션에 추가 // userVO.getType() 값이 DB에 PARTNER 또는 CLIENT 형태로 들어있다고 가정
+			String userType = userVO.getType();
+			session.setAttribute("userType", userType);
+
 		}
 
 		return url;
