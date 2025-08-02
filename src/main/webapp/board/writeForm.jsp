@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>π 프로젝트 등록하기</title>
+<title>BuildIT</title>
 
 <!-- 외부 CSS -->
  <link rel="stylesheet" href="/Board-WEB/resources/css/writeForm.css"

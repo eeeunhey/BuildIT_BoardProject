@@ -23,7 +23,7 @@ request.setAttribute("board", board);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세 보기</title>
+<title>BuildIT</title>
 <link rel="stylesheet" href="/Board-WEB/resources/css/detail.css">
 <style>
 #content>* {

@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>회원가입</title>
+  <title>BuildIT_회원가입</title>
   <link rel="stylesheet" href="/Board-WEB/resources/css/register.css">
 </head>
 <body>

@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>BuildIT - 실무 프로젝트 채용 플랫폼</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/my_css.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/layout.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/my_css.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/main.css">
 </head>
 <body>
 	<header>
@@ -123,7 +126,8 @@
 			<p>
 				지금 회원가입하고<br>실무 꿀팁을 스크랩해 보세요.
 			</p>
-			<button class="signup-btn">회원가입</button>
+			<a href="${pageContext.request.contextPath}board/signIn/signIn.do"
+				class="signup-btn"> 회원가입 </a>
 		</div>
 
 	</section>

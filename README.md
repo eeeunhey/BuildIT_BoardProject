@@ -203,5 +203,11 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 	- `LoginProcessController.java` Type 정보를 가져올 수 있도록 수정
 	- `README.md` update
 	- `Reference.md` update
+	
+### 2025-08-02
+	- `SignInController.jsp` 코드 수정 
+	- `SignInControllerProcess` 클래스 생성 구현예정  
+	- `README.md` update
+	- `Reference.md` update
 
 > **Build it, with Buildit.**

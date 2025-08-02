@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>알바 게시판</title>
+<title>BuildIT</title>
 <link rel="stylesheet" href="/Board-WEB/resources/css/list.css">
 <script>
 	window.onload = function() {
