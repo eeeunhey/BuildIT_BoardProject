@@ -209,5 +209,13 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 	- `SignInControllerProcess` 클래스 생성 구현예정  
 	- `README.md` update
 	- `Reference.md` update
+	
+### 2025-08-03
+	- `SignInController.jsp` 개념 공부
+	- `SignInControllerProcess` 클래스 생성 구현예정 개념 공부
+	- `CSS, signIn.jsp` 수정
+	- `README.md` update
+	- `Reference.md` update
+	-  study-log file add
 
 > **Build it, with Buildit.**

@@ -3,141 +3,149 @@
 
 /* 전역 설정 */
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
+	font-family: 'Noto Sans KR', sans-serif;
+	background-color: #f9f9f9;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
 }
 
 .register-container {
-  width: 100%;
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+	width: 100%;
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 30px;
+	background-color: white;
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 24px;
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 24px;
 }
 
 /* 폼 */
 .register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
 }
 
-.register-form input[type="text"],
-.register-form input[type="email"],
-.register-form input[type="password"] {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
+.register-form input[type="text"], .register-form input[type="email"],
+	.register-form input[type="password"] {
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 14px;
 }
 
 /* 안내 문구 */
 .info-text {
-  font-size: 12px;
-  color: #777;
-  margin-top: -10px;
-  margin-bottom: 10px;
+	font-size: 12px;
+	color: #777;
+	margin-top: -10px;
+	margin-bottom: 10px;
 }
 
 /* 가입 버튼 */
 .btn-primary {
-  width: 100%;
-  padding: 12px;
-  background-color: #2da5f6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s;
+	width: 100%;
+	padding: 12px;
+	background-color: #2da5f6;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: 0.2s;
 }
 
 .btn-primary:hover {
-  background-color: #1995e3;
+	background-color: #1995e3;
 }
 
 /* 구분선 */
 .divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-  color: #aaa;
-  font-size: 13px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin: 20px 0;
+	color: #aaa;
+	font-size: 13px;
 }
 
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #ddd;
+.divider::before, .divider::after {
+	content: '';
+	flex: 1;
+	border-bottom: 1px solid #ddd;
 }
 
 .divider::before {
-  margin-right: 1
+	margin-right: 1
 }
 
 /* 소셜 버튼 */
 .btn-social {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: white;
-  font-size: 14px;
-  cursor: pointer;
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: white;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 /* 구글 스타일 */
 .btn-social.google {
-  background: white url('/Board-WEB/resources/images/Google.png') no-repeat 12px center;
-  background-size: 20px;
-  padding-left: 40px;
+	background: white url('/Board-WEB/resources/images/Google.png')
+		no-repeat 12px center;
+	background-size: 20px;
+	padding-left: 40px;
 }
 
 /* 페이스북 스타일 */
 .btn-social.facebook {
-  background: white url('/Board-WEB/resources/images/KakaoTalk.png') no-repeat 12px center;
-  background-size: 20px;
-  padding-left: 40px;
+	background: white url('/Board-WEB/resources/images/KakaoTalk.png')
+		no-repeat 12px center;
+	background-size: 20px;
+	padding-left: 40px;
 }
 
 /* 로그인 안내 */
 .login-text {
-  text-align: center;
-  font-size: 13px;
-  margin-top: 15px;
+	text-align: center;
+	font-size: 13px;
+	margin-top: 15px;
 }
 
 .login-text a {
-  color: #2da5f6;
-  text-decoration: none;
+	color: #2da5f6;
+	text-decoration: none;
 }
 
 .login-text a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 /* 🔧 잘렸던 구분선 끝 수정 */
 .divider::before {
-  margin-right: 10px;
+	margin-right: 10px;
+}
+
+.radio-group {
+	margin: 15px 0;
+}
+
+.radio-group label {
+	margin-right: 20px;
 }

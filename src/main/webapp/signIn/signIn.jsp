@@ -10,12 +10,12 @@
   <div class="register-container">
     <h2>회원가입</h2>
     <form action="register.do" method="post" class="register-form">
-      <!-- 이메일 -->
-      <input type="email" name="email" placeholder="이메일" required>
-      <p class="info-text">비즈니스용 이메일 사용을 권장합니다.</p>
 
       <!-- 아이디 -->
-      <input type="text" name="userId" placeholder="아이디" required>
+      <input type="text" name="id" placeholder="아이디" required>
+
+      <!-- 이름 -->
+      <input type="text" name="name" placeholder="이름" required>
 
       <!-- 비밀번호 -->
       <input type="password" name="password" placeholder="비밀번호 (8자 이상 32자 이하)" required>
@@ -23,6 +23,18 @@
       <!-- 비밀번호 확인 -->
       <input type="password" name="confirmPassword" placeholder="비밀번호 확인" required>
 
+      <!-- 회원 유형 선택 (라디오 버튼) -->
+      <div class="radio-group">
+        <p>회원 유형</p>
+        <label>
+          <input type="radio" name="type" value="CLIENT" required>
+          CLIENT (의뢰인)
+        </label>
+        <label>
+          <input type="radio" name="type" value="PARTNER" required>
+          PARTNER (파트너)
+        </label>
+      </div>
 
       <!-- 가입 버튼 -->
       <button type="submit" class="btn-primary">회원가입</button>
