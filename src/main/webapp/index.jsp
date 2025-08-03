@@ -126,7 +126,7 @@
 			<p>
 				지금 회원가입하고<br>실무 꿀팁을 스크랩해 보세요.
 			</p>
-			<a href="${pageContext.request.contextPath}board/signIn/signIn.do"
+			<a href="${pageContext.request.contextPath}/signIn/signIn.do"
 				class="signup-btn"> 회원가입 </a>
 		</div>
 

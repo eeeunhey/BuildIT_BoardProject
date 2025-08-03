@@ -34,7 +34,7 @@
 			<!-- 유저 정보 -->
 			<div class="user-info">
 				<span>${empty userVO ? "GUEST" : userVO.name}님 환영합니다</span> <a
-					href="${pageContext.request.contextPath}board/signIn/signIn.do">회원가입</a>
+					href="${pageContext.request.contextPath}/signIn/signIn.do">회원가입</a>
 				<a href="${pageContext.request.contextPath}/login/login.do">로그인</a>
 			</div>
 		</div>
