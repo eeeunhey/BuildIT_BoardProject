@@ -205,17 +205,26 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 	- `Reference.md` update
 	
 ### 2025-08-02
-	- `SignInController.jsp` 코드 수정 
-	- `SignInControllerProcess` 클래스 생성 구현예정  
+	- `SignUpController.jsp` 회원가입을 위한 컨트롤
+	- `SignUpControllerProcess` 처리를 위한 컨트롤
 	- `README.md` update
 	- `Reference.md` update
 	
 ### 2025-08-03
-	- `SignInController.jsp` 개념 공부
-	- `SignInControllerProcess` 클래스 생성 구현예정 개념 공부
-	- `CSS, signIn.jsp` 수정
+	- `SignUpController.jsp` 개념 공부
+	- `SignUpControllerProcess` 클래스 생성 구현 예정, 개념 공부
+	- `CSS`, `signIn.jsp` 수정
 	- `README.md` update
 	- `Reference.md` update
-	-  study-log file add
+	- `study-log` 파일 추가
+
+### 2025-08-04
+	- 개념을 학습하며 전체적인 코드 구조를 수정함
+	- 데이터 처리 흐름(순서)에 대한 이해 부족을 느낌
+	- `SignInControllerController.java`
+		- 실제로 DB에 데이터를 저장하는 로직이 없음
+		- 회원 정보를 처리할 DAO 클래스(`MemberDAO`) 구현 필요
+		- 회원가입 시 필수 항목에 대한 유효성 검증 로직이 없음
+		- 회원가입 실패 시 처리하는 예외/에러 로직이 없음
 
 > **Build it, with Buildit.**
