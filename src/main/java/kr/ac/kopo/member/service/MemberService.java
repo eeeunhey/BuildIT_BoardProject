@@ -15,4 +15,13 @@ public class MemberService {
 	public MemberVO login(MemberVO member) throws Exception {
 		return memberDao.selectMemberByIDPassword(member);
 	}
+
+	public void registerMember(MemberVO member) throws Exception {
+		memberDao.insertMember(member);
+		
+	}
+
+	public boolean isExistId(String id) throws Exception {
+		return memberDao.isExistId(id);
+	}
 }
