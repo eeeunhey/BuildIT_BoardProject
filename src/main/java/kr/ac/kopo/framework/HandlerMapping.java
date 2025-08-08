@@ -10,6 +10,7 @@ import java.util.Set;
 public class HandlerMapping {
 
 	private Map<String, Controller> mappings;
+	public String debugMappings() { return mappings.keySet().toString(); }
 	
 	public HandlerMapping() {
 		mappings = new HashMap<String, Controller>();

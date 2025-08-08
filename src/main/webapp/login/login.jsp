@@ -69,7 +69,7 @@
 			</form>
 
 			<div class="signup-link">
-				아직 빌드잇의 통합회원이 아니신가요? <a href="${pageContext.request.contextPath}//login/sign.do">회원가입</a>
+				아직 빌드잇의 통합회원이 아니신가요? <a href="${pageContext.request.contextPath}/signup/signUp.do">회원가입</a>
 			</div>
 		</div>
 	</div>

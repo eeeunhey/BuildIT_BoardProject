@@ -228,5 +228,32 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 		- 회원가입 실패 시 처리하는 예외/에러 로직이 없음
 		
 		
-
+### 2025-08-06
+	- 실시간 아이디 중복 확인 기능 구현
+	- 전체 흐름에 대한 이해 부족을 느껴 개념 재정리 진행
+	- `register.jsp`
+	  - `onblur` 이벤트를 통해 입력한 아이디를 서버에 AJAX로 요청
+	  - 응답 결과 (`"exist"` or `"available"`)에 따라 사용자에게 실시간 피드백 제공
+	  - 비밀번호 확인 일치 여부는 `validateForm()`으로 처리
+	- `CheckIdController.java`
+	  - `MemberService.isExistId(id)` 호출
+	  - 결과를 문자열로 응답 (`"exist"` 또는 `"available"`)
+	- `MemberDAOImpl.java`
+	  - `isExistId(String id)` 메서드 구현 (`SELECT COUNT(*)`)
+	  - 예외 발생 시 `RuntimeException`으로 래핑해 던짐
+	- `SignUpProcessController.java`
+	  - 회원가입 요청 처리 시 중복 아이디 검사 추가
+	  - 이미 존재하는 경우 메시지와 함께 리다이렉트 처리
+	  - 회원가입 성공 시 안내 메시지 후 로그인 페이지로 이동
+	 
+### 2025-08-08
+	- 회원가입 기능 실행 시 NullPointerException 발생 원인 분석
+	- HandlerMapping에서 해당 URI(/signup/signupProcess.do) 매핑 누락 확인	
+	- bean.properties에 매핑 정보 추가하여 컨트롤러 정상 호출 가능
+	- 디버그 로그로 URI, Context Path, 매핑 상태를 출력하여 문제 진단
+	- SignUpProcessController에서 요청 파라미터(id, name, password, type) 콘솔 출력으로 값 흐름 확인
+	- NPE 개념 복습 및 예외 예방 방법(매핑 유효성 체크, null 검사) 학습	
+	- 회원가입 완료 후 JSP에서 alert() 띄운 뒤 location.href로 로그인 페이지 이동 처리 방법 확인
+	  
+	  
 > **Build it, with Buildit.**
