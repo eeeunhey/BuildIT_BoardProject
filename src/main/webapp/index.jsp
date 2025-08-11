@@ -1,5 +1,7 @@
+<%-- 작성일: 2025-08-11 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,42 +44,57 @@
 				alt="오늘의 토픽 이미지" class="topic-bg-img" />
 		</div>
 
+		<!-- 🧩 최신 프로젝트 공고 -->
 		<div class="job-picks">
 			<h4>요즘 뜨는 IT 프로젝트 공고</h4>
+
 			<div class="collection-list">
+				<c:choose>
+					<c:when test="${not empty hotBoardList}">
+						<c:forEach var="post" items="${hotBoardList}">
+							<c:url var="detailUrl" value="/board/detail.do">
+								<c:param name="postId" value="${post.postId}" />
+							</c:url>
 
-				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일1" />
-					<div class="collection-info">
-						<p class="title">백엔드 개발자 - Spring/MyBatis</p>
-						<p class="meta">서울 · 시급 20,000원 · 마감 D-3</p>
-					</div>
-				</div>
+							<!-- 카드 전체가 링크 -->
+							<a class="collection-card"
+								href="${pageContext.request.contextPath}${detailUrl}">
+								<div class="thumb">
+									<img
+										src="${pageContext.request.contextPath}/board/image.do?postId=${post.postId}"
+										alt="${post.title}"
+										onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/resources/images/workimage.png';" />
+								</div>
+								<div class="collection-info">
+									<p class="title">${post.title}</p>
+									<p class="meta">
+										${post.location} ·
+										<c:choose>
+											<c:when test="${post.pay != 0}">시급/급여 ${post.pay}</c:when>
+											<c:otherwise>급여 협의</c:otherwise>
+										</c:choose>
+										· 마감 ${post.deadline}
+									</p>
+								</div>
+							</a>
+						</c:forEach>
+					</c:when>
 
-				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일2" />
-					<div class="collection-info">
-						<p class="title">프론트엔드 개발자 - React</p>
-						<p class="meta">부산 · 월급 300만원 · 마감 D-5</p>
-					</div>
-				</div>
-
-				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일3" />
-					<div class="collection-info">
-						<p class="title">AI 모델 학습 데이터 가공</p>
-						<p class="meta">재택 가능 · 일급 15만원 · 마감 D-2</p>
-					</div>
-				</div>
-
-				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/workimage.png" alt="IT썸네일4" />
-					<div class="collection-info">
-						<p class="title">IoT 기반 시스템 테스트</p>
-						<p class="meta">대전 · 시급 18,000원 · 마감 D-1</p>
-					</div>
-				</div>
-
+					<c:otherwise>
+						<!-- 비어있을 때 플레이스홀더 -->
+						<div class="collection-card">
+							<div class="thumb">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/workimage.png"
+									alt="placeholder" />
+							</div>
+							<div class="collection-info">
+								<p class="title">등록된 프로젝트가 없습니다</p>
+								<p class="meta">지금 첫 프로젝트를 등록해 보세요</p>
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 
@@ -87,7 +104,9 @@
 			<div class="collection-list">
 
 				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/technology.png" alt="썸네일1" />
+					<img
+						src="${pageContext.request.contextPath}/resources/images/technology.png"
+						alt="썸네일1" />
 					<div class="collection-info">
 						<p class="title">불쾌한 골짜기 밟도록 못 가는 AI</p>
 						<p class="meta">조회수 632 · 좋아요 7 · 댓글 6</p>
@@ -95,7 +114,9 @@
 				</div>
 
 				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/technology.png" alt="썸네일2" />
+					<img
+						src="${pageContext.request.contextPath}/resources/images/technology.png"
+						alt="썸네일2" />
 					<div class="collection-info">
 						<p class="title">고양이도 알아듣는 생존형 AI</p>
 						<p class="meta">조회수 257 · 좋아요 3 · 댓글 2</p>
@@ -103,7 +124,9 @@
 				</div>
 
 				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/technology.png" alt="썸네일3" />
+					<img
+						src="${pageContext.request.contextPath}/resources/images/technology.png"
+						alt="썸네일3" />
 					<div class="collection-info">
 						<p class="title">PICK IT 보따리 컬렉션 모음</p>
 						<p class="meta">조회수 378 · 좋아요 7 · 댓글 7</p>
@@ -111,7 +134,9 @@
 				</div>
 
 				<div class="collection-card">
-					<img src="/Board-WEB/resources/images/technology.png" alt="썸네일4" />
+					<img
+						src="${pageContext.request.contextPath}/resources/images/technology.png"
+						alt="썸네일4" />
 					<div class="collection-info">
 						<p class="title">요즘IT도 광고해요</p>
 						<p class="meta">조회수 283 · 좋아요 3 · 댓글 3</p>
@@ -127,7 +152,7 @@
 				지금 회원가입하고<br>실무 꿀팁을 스크랩해 보세요.
 			</p>
 			<a href="${pageContext.request.contextPath}/signup/signUp.do"
-				class="signup-btn"> 회원가입 </a>
+				class="signup-btn">회원가입</a>
 		</div>
 
 	</section>
