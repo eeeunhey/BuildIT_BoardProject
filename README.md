@@ -254,6 +254,22 @@ Buildit은 강의, 책, 온라인 강좌 등으로 배운 기술을
 	- SignUpProcessController에서 요청 파라미터(id, name, password, type) 콘솔 출력으로 값 흐름 확인
 	- NPE 개념 복습 및 예외 예방 방법(매핑 유효성 체크, null 검사) 학습	
 	- 회원가입 완료 후 JSP에서 alert() 띄운 뒤 location.href로 로그인 페이지 이동 처리 방법 확인
+	
+
+
+### 2025-08-11
+메인 페이지 최신 게시글 4개 출력 기능 구현 (hotBoardList) 예정
+IndexController → BoardService → BoardDAO → DB → JSP 데이터 흐름 점검
+	`IndexController` : /index.do 요청을 받아 최신 게시글 목록(hotBoardList)을 조회해 JSP로 전달
+	`BoardService` : `DAO`를 호출해 최신 4개의 게시글 데이터를 가져오고 후처리
+	`BoardDAO` : DB에서 최신 4개의 게시글(제목, 위치, 급여, 이미지 등) 조회
+		- `List<BoardVO> findLatest(int limit);` : limit 개수만큼 DB에서 최신 게시글을 가져오는 쿼리를 실행
+
+JSP → hotBoardList를 반복 렌더링해 제목·정보·이미지를 화면에 표시
+BoardImageController → /board/image.do 요청 시 DB에서 이미지 BLOB 읽어 브라우저에 전송
+DB 이미지 BLOB을 /board/image.do?postId=... 경로로 스트리밍하여 카드에 표시
+JSP에서 onerror 속성으로 이미지 미존재 시 기본 이미지로 대체 처리
+Controller에서 setAttribute로 전달된 hotBoardList를 <c:forEach>로 반복 출력
 	  
 	  
 > **Build it, with Buildit.**

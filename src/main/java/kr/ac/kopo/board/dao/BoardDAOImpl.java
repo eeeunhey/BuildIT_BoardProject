@@ -161,48 +161,88 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> selectLatest(int limit) {
-		List<BoardVO> boardList = new ArrayList<>();
-
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT * FROM (");
-		sql.append("  SELECT postid, title, writerid, content, location, pay, worktime, ");
-		sql.append("         TO_CHAR(regdate, 'YYYY-MM-DD') regdate, ");
-		sql.append("         TO_CHAR(deadline, 'YYYY-MM-DD') deadline, image ");
-		sql.append("    FROM tbl_project_post ");
-		sql.append("   ORDER BY regdate DESC");
-		sql.append(") WHERE ROWNUM <= ?");
+	public byte[] selectImageByPostId(int postId) {
+		// 테이블/컬럼: TBL_PROJECT_POST.POSTID, IMAGE
+		final String sql = "SELECT IMAGE FROM TBL_PROJECT_POST WHERE POSTID = ?";
 
 		try (Connection conn = new ConnectionFactory().getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-			pstmt.setInt(1, limit);
-			ResultSet rs = pstmt.executeQuery();
+			pstmt.setInt(1, postId);
 
-			while (rs.next()) {
-				BoardVO vo = new BoardVO(rs.getInt("postid"), rs.getString("title"), rs.getString("writerid"),
-						rs.getString("content"), rs.getString("location"), rs.getInt("pay"), rs.getString("worktime"),
-						rs.getString("regdate"), rs.getString("deadline"), rs.getBytes("image"));
-				boardList.add(vo);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					// 드라이버에 따라 getBytes로 충분
+					byte[] bytes = rs.getBytes("IMAGE");
+					if (bytes != null && bytes.length > 0)
+						return bytes;
+
+					// 예비: BLOB으로 재시도 (일부 환경)
+					java.sql.Blob blob = rs.getBlob("IMAGE");
+					if (blob != null) {
+						return blob.getBytes(1, (int) blob.length());
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO: 로깅으로 교체 권장
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public byte[] selectLatestImage() {
+		// Oracle 12c+ (권장)
+		final String sql12c = "SELECT IMAGE " + "  FROM TBL_PROJECT_POST " + " WHERE IMAGE IS NOT NULL "
+				+ " ORDER BY REGDATE DESC, POSTID DESC " + " FETCH FIRST 1 ROW ONLY";
+
+		// Oracle 11g 호환 쿼리 (필요 시 이걸로 교체)
+		final String sql11g = "SELECT IMAGE " + "  FROM ( " + "        SELECT IMAGE "
+				+ "          FROM TBL_PROJECT_POST " + "         WHERE IMAGE IS NOT NULL "
+				+ "         ORDER BY REGDATE DESC, POSTID DESC " + "       ) " + " WHERE ROWNUM = 1";
+
+		final String sql = sql12c; // 11g면 sql11g 사용
+
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+
+			if (rs.next()) {
+				byte[] b = rs.getBytes("IMAGE");
+				if (b != null && b.length > 0)
+					return b;
+				java.sql.Blob blob = rs.getBlob("IMAGE");
+				if (blob != null)
+					return blob.getBytes(1, (int) blob.length());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return boardList;
+		return null;
 	}
 
 	@Override
-	public byte[] selectImageByPostId(int postId) {
-		String sql = "SELECT image FROM tbl_project_post WHERE postid = ?";
+	public Integer selectLatestPostIdWithImage() {
+		// Oracle 12c+ 권장
+		final String sql12c = "SELECT POSTID " + "  FROM TBL_PROJECT_POST " + " WHERE IMAGE IS NOT NULL "
+				+ " ORDER BY REGDATE DESC, POSTID DESC " + " FETCH FIRST 1 ROW ONLY";
+
+		// Oracle 11g 호환 쿼리
+		final String sql11g = "SELECT POSTID FROM ( " + "  SELECT POSTID " + "    FROM TBL_PROJECT_POST "
+				+ "   WHERE IMAGE IS NOT NULL " + "   ORDER BY REGDATE DESC, POSTID DESC " + ") WHERE ROWNUM = 1";
+
+		final String sql = sql12c; // 11g면 sql11g로 교체
+
 		try (Connection conn = new ConnectionFactory().getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql)) {
-			ps.setInt(1, postId);
-			try (ResultSet rs = ps.executeQuery()) {
-				if (rs.next())
-					return rs.getBytes("image");
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+
+			if (rs.next()) {
+				return rs.getInt("POSTID");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); // TODO: 로거로 교체 권장
 		}
 		return null;
 	}

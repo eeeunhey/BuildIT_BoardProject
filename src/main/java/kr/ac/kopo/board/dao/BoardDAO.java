@@ -23,8 +23,11 @@ public interface BoardDAO {
 	/** 게시글 삭제 */
 	void deleteBoardByNo(int boardNo);
 
-	List<BoardVO> selectLatest(int limit);
-
-	// BoardDAO.java
 	byte[] selectImageByPostId(int postId);
+
+	/** 이미지가 있는 가장 최근 게시글의 이미지(BLOB) 1건 */
+	byte[] selectLatestImage();
+
+	Integer selectLatestPostIdWithImage();
+
 }
