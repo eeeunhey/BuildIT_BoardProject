@@ -1,16 +1,13 @@
 package kr.ac.kopo.board.dao;
 
-import java.io.InputStream;
+import java.security.Timestamp;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.ac.kopo.board.vo.BoardVO;
 import kr.ac.kopo.util.ConnectionFactory;
@@ -245,6 +242,33 @@ public class BoardDAOImpl implements BoardDAO {
 			e.printStackTrace(); // TODO: 로거로 교체 권장
 		}
 		return null;
+	}
+
+	// BoardDAOImpl.java (예시 구현)
+	@Override
+	public List<BoardVO> selectLatest(int limit) {
+		String sql = "SELECT postid, title, writerid, content, location, pay, worktime, "
+				+ "       TO_CHAR(regdate,'YYYY-MM-DD') regdate, "
+				+ "       TO_CHAR(deadline,'YYYY-MM-DD') deadline, image " + "  FROM TBL_PROJECT_POST "
+				+ " ORDER BY regdate DESC, postid DESC " + " FETCH FIRST ? ROWS ONLY"; // 12c+ ; 11g면 ROWNUM 서브쿼리
+
+		List<BoardVO> list = new ArrayList<>();
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+			ps.setInt(1, limit);
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					BoardVO vo = new BoardVO(rs.getInt("postid"), rs.getString("title"), rs.getString("writerid"),
+							rs.getString("content"), rs.getString("location"), rs.getInt("pay"),
+							rs.getString("worktime"), rs.getString("regdate"), rs.getString("deadline"),
+							rs.getBytes("image"));
+					list.add(vo);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

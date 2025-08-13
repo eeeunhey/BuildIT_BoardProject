@@ -30,4 +30,6 @@ public interface BoardDAO {
 
 	Integer selectLatestPostIdWithImage();
 
+	List<BoardVO> selectLatest(int limit);
+
 }

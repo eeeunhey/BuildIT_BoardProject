@@ -22,7 +22,7 @@
 			<!-- 🔹 로고 + 검색창 같은 줄 -->
 			<div class="logo-search-row">
 				<!-- 로고 -->
-				<a href="${pageContext.request.contextPath}/index.jsp"> <img
+				<a href="${pageContext.request.contextPath}/index.do"> <img
 					src="${pageContext.request.contextPath}/resources/images/logo.png"
 					alt="로고" class="logo-img">
 				</a>

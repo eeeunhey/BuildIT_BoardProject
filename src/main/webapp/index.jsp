@@ -50,7 +50,7 @@
 					<img src="${pageContext.request.contextPath}/board/latest-image.do"
 						alt="썸네일" />
 					<div class="collection-info">
-						<p class="title">백엔드 개발자 - Spring/MyBatis</p>
+						<p class="title">${post.title}</p>
 						<p class="meta">서울 · 시급 20,000원 · 마감 D-3</p>
 					</div>
 				</div>
