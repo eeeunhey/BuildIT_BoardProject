@@ -1,6 +1,7 @@
 <%-- 작성일: 2025-08-11 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -63,13 +64,54 @@
 		</div>
 
 		<!-- 오른쪽: 로그인/회원 정보 -->
+		<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+
 		<div class="header-right">
-			<div class="user-info">
-				<span>${empty userVO ? "GUEST" : userVO.name}님 환영합니다</span> <a
-					href="${pageContext.request.contextPath}/signup/signUp.do">회원가입</a>
-				<a href="${pageContext.request.contextPath}/login/login.do">로그인</a>
+			<div class="user-area">
+
+				<!-- 알림 벨 -->
+				<a class="icon-button bell"
+					href="${pageContext.request.contextPath}/notification/list.do"
+					aria-label="알림"> <i class="fa-regular fa-bell"></i> <c:if
+						test="${not empty notiCount and notiCount > 0}">
+						<span class="badge">${notiCount}</span>
+					</c:if>
+				</a>
+
+				<c:choose>
+					<c:when test="${not empty userVO}">
+						<!-- 👇 스샷처럼: 노란 손 + 작은 화살표 (버튼 테두리 없음) -->
+						<div class="profile">
+							<button type="button" class="profile-min" id="profileBtn"
+								aria-haspopup="true" aria-expanded="false">
+								<i class="fa-solid fa-hand profile-hand" aria-hidden="true"></i>
+								<i class="fa-solid fa-chevron-down caret" aria-hidden="true"></i>
+							</button>
+							<ul class="profile-menu" id="profileMenu" role="menu">
+								<li role="menuitem"><a
+									href="${pageContext.request.contextPath}/my/posts.do">내 작성글</a></li>
+								<li role="menuitem"><a
+									href="${pageContext.request.contextPath}/my/bookmarks.do">내
+										관심글</a></li>
+								<li role="menuitem"><a
+									href="${pageContext.request.contextPath}/settings.do">설정</a></li>
+								<li role="menuitem"><a
+									href="${pageContext.request.contextPath}/logout.do">로그아웃</a></li>
+							</ul>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<!-- 비로그인: 간단 표시 -->
+						<div class="auth-links">
+							<a href="${pageContext.request.contextPath}/signup/signUp.do">회원가입</a>
+							<a href="${pageContext.request.contextPath}/login/login.do">로그인</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+
 			</div>
 		</div>
+
 
 	</header>
 
@@ -98,7 +140,13 @@
         if (!dropdown.contains(e.target)) menu.style.display = 'none';
       });
     });
+    
+    document.getElementById('logoutBtn').onclick = (e) => {
+        const ctx = e.currentTarget.getAttribute('data-ctx') || '';
+        location.href = ctx + '/logout.do';
+      };
   </script>
+
 
 </body>
 </html>

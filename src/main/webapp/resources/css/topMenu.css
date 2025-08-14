@@ -160,3 +160,81 @@
 .user-info a:hover {
 	color: #808080;
 }
+
+/* 프로필 미니 버튼(노란 손 + 화살표) */
+.profile-min {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: 36px;
+	padding: 0 6px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	border-radius: 9999px;
+}
+
+.profile-min:hover {
+	background: #F3F4F6;
+}
+
+.avatar-emoji {
+	font-size: 18px;
+	line-height: 1;
+
+}
+
+.caret {
+	font-size: 12px;
+	color: #9CA3AF;
+}
+
+.floating-menu {
+	position: fixed;
+	width: 180px;
+	background: #fff;
+	border: 1px solid #E5E7EB;
+	border-radius: 12px;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, .12);
+	padding: 8px 0;
+	z-index: 9999;
+	display: none; /* JS로 토글 */
+	color: #111827; /* 글자색 기본 */
+}
+
+.floating-menu a {
+	display: block;
+	padding: 12px 16px;
+	font-size: 14px;
+	color: #111827; /* 링크 글자색 */
+	line-height: 1.4;
+}
+
+.floating-menu a:hover {
+	background: #F9FAFB;
+}
+
+
+.floating-menu, .floating-menu * {
+	color: #111827 !important;
+	-webkit-text-fill-color: #111827 !important;
+}
+/* (있으면) 알림 벨 배지 스타일 예시 */
+.icon-button.bell .badge {
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	background: #EB5757;
+	color: #fff;
+	border-radius: 9999px;
+	border: 2px solid #fff;
+	font-size: 11px;
+	line-height: 14px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+}
