@@ -13,7 +13,6 @@ public class LogoutController implements Controller {
 		HttpSession session = request.getSession(false); // 세션이 없으면 null
 		if (session != null) {
 			session.invalidate(); // 세션 종료
-			System.out.println("[LOGOUT] called");
 		}
 
 		// 메인 페이지로 리다이렉트
