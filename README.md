@@ -281,11 +281,15 @@ Controller에서 setAttribute로 전달된 hotBoardList를 <c:forEach>로 반복
 	- LogoutController에서 세션 무효화 후 redirect 시 컨텍스트 경로 포함 필요성 학습
 	  
 	  
+### 2025-08-15 — 마이페이지 회원유형 분기
+	- `CLIENT` / `PARTNER`에 따라 `client.jsp` / `partner.jsp` forward
+	- 미로그인 시 `/login/login.do` 리다이렉트
+	  
 ### 2025-08-16 — 마이페이지 분기 & 파트너 프로필
-- 회원유형에 따라 `client.jsp` / `partnerpage.jsp` 분기 (컨트롤러 forward)
-- 미로그인/알 수 없는 유형 → `/login/login.do` 리다이렉트
-- 파트너 프로필: 교육 이력 동적 추가/삭제 UI
-- `<c:choose>` 주석 오류 해결 (JSP 주석만 사용)
-- CSS 라이트 모드 전용 분리
+	- 회원유형에 따라 `client.jsp` / `partnerpage.jsp` 분기 (컨트롤러 forward)
+	- 미로그인/알 수 없는 유형 → `/login/login.do` 리다이렉트
+	- 파트너 프로필: 교육 이력 동적 추가/삭제 UI
+	- `<c:choose>` 주석 오류 해결 (JSP 주석만 사용)
+	- CSS 라이트 모드 전용 분리
 
 > **Build it, with Buildit.**
